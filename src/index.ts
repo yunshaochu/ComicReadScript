@@ -24,6 +24,7 @@ import { getImglistByHtml } from 'userscript/copyApi';
 import { otherSite } from 'userscript/otherSite';
 
 import { getNhentaiData, toImgList } from './userscript/nhentaiApi';
+import type { RequestDetails } from './request';
 
 /** 站点配置 */
 let options: InitOptions | undefined;
@@ -755,6 +756,70 @@ try {
           if (!id) throw new Error(t('site.changed_load_failed'));
           const data = await getNhentaiData(id);
           return toImgList(data);
+        },
+      };
+      break;
+    }
+
+    // #[hdoujin](https://hdoujin.org)
+    // test: https://hdoujin.org/g/95756/2d1aa56c3325
+    case 'hdoujin.org': {
+      if (!location.pathname.startsWith('/g/')) break;
+
+      // https://github.com/dyphire/hentai-assistant/blob/hdoujin/src/providers/hdoujin_api.py
+
+      const clearance = localStorage.getItem('clearance');
+      const reRes = location.pathname.match(/\/g\/(\d+)\/(.+)/);
+      if (!reRes || !clearance) throw new Error(t('site.changed_load_failed'));
+      const [, id, key] = reRes;
+
+      const api = async <T>(url: string, details?: RequestDetails<T>) => {
+        const res = await request<T>(
+          `https://api.hdoujin.org${url}?crt=${clearance}`,
+          { fetch: true, responseType: 'json', ...details },
+        );
+        return res.response;
+      };
+
+      options = {
+        name: 'hdoujin',
+        getImgList: async ({ dynamicLazyLoad }) => {
+          type ExtraData = { id: string; key: string; size: string };
+          const { data } = await api<{ data: Record<string, ExtraData> }>(
+            `/books/detail/${id}/${key}`,
+            { method: 'POST' },
+          );
+
+          // 使用原图分辨率
+          const size = '1280';
+          const { id: dataId, key: dataKey } = data[size];
+          const { base, entries } = await api<{
+            base: string;
+            entries: { path: string }[];
+          }>(`/books/data/${id}/${key}/${dataId}/${dataKey}/${size}`);
+          // debugger;
+          // return entries.map(({ path }) => `${base}${path}`);
+
+          return dynamicLazyLoad({
+            length: entries.length,
+            loadImg: async (i) => {
+              const res = await request<Blob>(`${base}${entries[i].path}`, {
+                cookie: document.cookie,
+                headers: {
+                  Referer: 'https://hdoujin.org/',
+                  Origin: 'https://hdoujin.org',
+                  'sec-fetch-dest': 'empty',
+                  'sec-fetch-mode': 'cors',
+                  'sec-fetch-site': 'cross-site',
+                },
+                responseType: 'blob',
+                fetch: false,
+              });
+
+              const imgUrl = URL.createObjectURL(res.response);
+              return imgUrl;
+            },
+          });
         },
       };
       break;
