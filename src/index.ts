@@ -23,6 +23,8 @@ import { request, toast, universal } from 'main';
 import { getImglistByHtml } from 'userscript/copyApi';
 import { otherSite } from 'userscript/otherSite';
 
+import { getNhentaiData, toImgList } from './userscript/nhentaiApi';
+
 /** 站点配置 */
 let options: InitOptions | undefined;
 
@@ -732,6 +734,28 @@ try {
                 'webp',
               ) as string,
           ),
+      };
+      break;
+    }
+
+    // #[hanime1](https://hanime1.me)
+    // test: https://hanime1.me/comic/134422
+    case 'hanime1.me': {
+      if (!location.pathname.startsWith('/comic/')) break;
+
+      options = {
+        name: 'hanime1',
+        getImgList: async () => {
+          const downloadDom = await wait(() =>
+            querySelector<HTMLAnchorElement>(
+              '.comics-metadata-margin-top a:has(span.material-icons)',
+            ),
+          );
+          const id = downloadDom.href.match(/\/g\/(\d+)\//)?.[1];
+          if (!id) throw new Error(t('site.changed_load_failed'));
+          const data = await getNhentaiData(id);
+          return toImgList(data);
+        },
       };
       break;
     }

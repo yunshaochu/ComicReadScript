@@ -7,6 +7,7 @@ import { render } from 'solid-js/web';
 import { fileType, hijackFn, querySelector, querySelectorAll, t } from 'helper';
 import { request, toast } from 'main';
 
+import { searchNhentai } from '../../userscript/nhentaiApi';
 import { type GalleryContext, isInCategories } from './helper';
 
 type ItemData = {
@@ -23,33 +24,6 @@ type SiteFn = {
 };
 
 const nhentai: SiteFn = async ({ setState, galleryTitle }) => {
-  type ComicInfo = {
-    id: number;
-    media_id: string;
-    num_pages: number;
-    images: { pages: { t: string; w: number; h: number }[] };
-    title: { japanese: string; english: string };
-  };
-
-  // nhentai api 对应的扩展名
-
-  // 只要带上 cf_clearance cookie 就能通过 Cloudflare 验证，但其是 httpOnly
-  // 目前暴力猴还不支持 GM_Cookie，篡改猴也需要去设置里手动设置才能支持 httpOnly
-  // 所以暂不处理，就嗯等
-  // https://github.com/violentmonkey/violentmonkey/issues/603
-  const {
-    response: { result },
-  } = await request<{ result: ComicInfo[] }>(
-    `https://nhentai.net/api/galleries/search?query=${galleryTitle}`,
-    {
-      responseType: 'json',
-      errorText: t('site.ehentai.nhentai_error'),
-      noTip: true,
-      headers: { 'User-Agent': navigator.userAgent },
-      fetch: false,
-    },
-  );
-
   const downImg = async (i: number, media_id: string, type: string) => {
     const imgRes = await request<Blob>(
       `https://i.nhentai.net/galleries/${media_id}/${i + 1}.${fileType[type]}`,
@@ -62,6 +36,7 @@ const nhentai: SiteFn = async ({ setState, galleryTitle }) => {
     return URL.createObjectURL(imgRes.response);
   };
 
+  const result = await searchNhentai(galleryTitle!);
   return result.map(({ id, title, images, num_pages, media_id }) => {
     const itemId = `@nh:${id}`;
     setState('comicMap', itemId, {
