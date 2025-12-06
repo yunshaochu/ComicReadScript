@@ -77,7 +77,6 @@ const packlist = [
   'components/IconButton',
   'components/Fab',
   'components/Toast',
-  'userscript/dmzjApi',
   'userscript/copyApi',
   'userscript/detectAd',
   'userscript/main',
@@ -103,8 +102,6 @@ const baseOptions = {
   external: [
     ...Object.keys(meta.resource ?? {}),
     ...packlist,
-    'dmzjDecrypt',
-    'dmzjApi',
     'main',
     /^solid/,
   ],

@@ -78,29 +78,6 @@ try {
       break;
     }
 
-    // #动漫之家（解锁隐藏漫画）
-    // TODO: 动漫之家是似了吗？怎么所有网页都没法正常使用
-    // test: todo
-    case 'comic.idmzj.com':
-    case 'comic.dmzj.com':
-    case 'manhua.idmzj.com':
-    case 'manhua.dmzj.com': {
-      inject('site/dmzj');
-      break;
-    }
-
-    case 'm.idmzj.com':
-    case 'm.dmzj.com': {
-      inject('site/dmzj_phone');
-      break;
-    }
-
-    case 'www.idmzj.com':
-    case 'www.dmzj.com': {
-      inject('site/dmzj_www');
-      break;
-    }
-
     // #E-Hentai（关联外站、快捷收藏、标签染色、识别广告页等）
     // test: https://e-hentai.org/g/2945358/699f8eb501
     case 'exhentai.org':
