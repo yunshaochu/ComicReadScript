@@ -35,9 +35,6 @@ const resourceList: Record<string, [string, string] | [string]> = {
   '@tensorflow/tfjs-backend-webgpu': [
     'https://registry.npmmirror.com/@tensorflow/tfjs-backend-webgpu/4.22.0/files/dist/tf-backend-webgpu.js',
   ],
-  // dmzjDecrypt: [
-  //   'https://update.sleazyfork.org/scripts/467177/1207199/dmzjDecrypt.js',
-  // ],
 };
 
 export const resource = {
@@ -56,16 +53,30 @@ const getSupportSiteList = () => {
   return [...indexCode.matchAll(/(?<=\n\s+\/\/\s#).+(?=\n)/g)].map((e) => e[0]);
 };
 
+const categoryMap = new Map<string, Set<string>>();
+
+const updateCategoryMap = () => {
+  for (const site of getSupportSiteList().slice(7)) {
+    const match = site.match(/^(.+?)(\[.+)$/);
+    if (!match) continue;
+    const [, category, link] = match;
+    if (!categoryMap.has(category)) categoryMap.set(category, new Set());
+    categoryMap.get(category)!.add(link);
+  }
+};
+
 /** 更新 README 上的支持站点列表 */
 export const updateReadme = () => {
   const readmePath = 'README.md';
   const readmeMd = fs.readFileSync(readmePath, 'utf8');
+  updateCategoryMap();
   const newMd = readmeMd.replace(
     /(?<=<!-- supportSiteList -->\n\n).*(?=\n\n<!-- supportSiteList -->)/s,
-    getSupportSiteList()
-      .slice(7)
-      .map((siteText) => `- ${siteText}`)
-      .join('\n'),
+    [...categoryMap.entries()]
+      .map(
+        ([category, links]) => `### ${category}\n\n${[...links].join(' · ')}`,
+      )
+      .join('\n\n'),
   );
   if (newMd !== readmeMd) fs.writeFileSync(readmePath, newMd);
 
@@ -79,27 +90,32 @@ export const updateReadme = () => {
   if (newOutMd !== outMd) fs.writeFileSync(outMdPath, newOutMd);
 };
 
-const enSupportSite = [
-  'E-Hentai (Associate nhentai, Quick favorite, Colorize tags, Floating tag list, etc.)',
-  'nhentai (Totally block comics, Auto page turning)',
-  'hitomi',
-  'Anchira',
-  'kemono',
-  'nude-moon',
-  'nekohouse',
-  'welovemanga',
-];
-
 /** 脚本头部注释 */
 export const getMetaData = (isDevMode: boolean) => {
+  updateCategoryMap();
+
+  const getCategory = (name: string) => {
+    if (!categoryMap.has(name)) return [];
+    return [...categoryMap.get(name)!].map(
+      (text) => text.match(/\[(.+?)\]/)?.[1],
+    );
+  };
+
+  const enSupportSite = [
+    'E-Hentai (Associate nhentai, Quick favorite, Colorize tags, Floating tag list, etc.)',
+    'nhentai (Totally block comics, Auto page turning)',
+    ...getCategory('国外R18'),
+    ...getCategory('Fanbox'),
+    ...getCategory('国外漫画站'),
+  ];
   const meta = {
     name: 'ComicRead',
     namespace: 'ComicRead',
     version: pkg.version,
     description: `${zh.description}${getSupportSiteList()
-      .map((site) => site.replace(/\[(.+)\]\(.+\)/, '$1'))
+      .map((site) => site.replace(/^.*\[(.+)\]\(.+\)/, '$1'))
       .join('、')}`,
-    'description:en': `${en.description} ${enSupportSite.join(' | ')}.`,
+    'description:en': `${en.description} ${enSupportSite.join(' | ')}`,
     'description:ru': ru.description,
     author: pkg.author,
     license: pkg.license,
@@ -107,8 +123,6 @@ export const getMetaData = (isDevMode: boolean) => {
     match: '*://*/*',
     connect: [
       'yamibo.com',
-      'dmzj.com',
-      'idmzj.com',
       'exhentai.org',
       'e-hentai.org',
       'hath.network',

@@ -197,32 +197,29 @@ Cotrans 也有自己的油猴脚本 —— 「[Cotrans 漫画/图片翻译器](h
 <!-- 根据 src/index.ts 自动生成 -->
 <!-- supportSiteList -->
 
-- [Pixiv](https://www.pixiv.net)
-- [再漫画](https://manhua.zaimanhua.com/)
-- [明日方舟泰拉记事社](https://terra-historicus.hypergryph.com)
-- [禁漫天堂](https://18comic.vip)
-- [漫画柜(manhuagui)](https://www.manhuagui.com)
-- [动漫屋(dm5)](https://www.dm5.com)
-- [绅士漫画(wnacg)](https://www.wnacg.com)
-- [mangabz](https://mangabz.com)
-- [komiic](https://komiic.com)
-- [MangaDex](https://mangadex.org)
-- [NoyAcg](https://noy1.top)
-- [無限動漫](https://www.8comic.com)
-- [熱辣漫畫](https://www.relamanhua.org/)
-- [hitomi](https://hitomi.la)
-- [hanime1](https://hanime1.me)
-- [hdoujin](https://hdoujin.org)
-- [SchaleNetwork](https://schale.network/)
-- [nude-moon](https://nude-moon.org)
-- [kemono](https://kemono.su)
-- [nekohouse](https://nekohouse.su)
-- [welovemanga](https://welovemanga.one)
-- [HentaiZap](https://hentaizap.com)
-- [IMHentai](https://imhentai.xxx)
-- [最前線](https://sai-zen-sen.jp)
-- [Tachidesk](https://github.com/Suwayomi/Tachidesk-Sorayomi)
-- [LANraragi](https://github.com/Difegue/LANraragi)
+### 国内漫画站
+
+[再漫画](https://manhua.zaimanhua.com/) · [漫画柜(manhuagui)](https://www.manhuagui.com) · [动漫屋(dm5)](https://www.dm5.com) · [mangabz](https://mangabz.com) · [komiic](https://komiic.com) · [無限動漫](https://www.8comic.com) · [再漫画](https://manhua.zaimanhua.com/) · [漫画柜(manhuagui)](https://www.manhuagui.com) · [动漫屋(dm5)](https://www.dm5.com) · [mangabz](https://mangabz.com) · [komiic](https://komiic.com) · [無限動漫](https://www.8comic.com)
+
+### 国内R18
+
+[绅士漫画(wnacg)](https://www.wnacg.com) · [禁漫天堂](https://18comic.vip) · [NoyAcg](https://noy1.top) · [熱辣漫畫](https://www.relamanhua.org/) · [hanime1](https://hanime1.me) · [绅士漫画(wnacg)](https://www.wnacg.com) · [禁漫天堂](https://18comic.vip) · [NoyAcg](https://noy1.top) · [熱辣漫畫](https://www.relamanhua.org/) · [hanime1](https://hanime1.me)
+
+### 国外R18
+
+[hitomi](https://hitomi.la) · [hdoujin](https://hdoujin.org) · [SchaleNetwork](https://schale.network/) · [nude-moon](https://nude-moon.org) · [HentaiZap](https://hentaizap.com) · [IMHentai](https://imhentai.xxx) · [hitomi](https://hitomi.la) · [hdoujin](https://hdoujin.org) · [SchaleNetwork](https://schale.network/) · [nude-moon](https://nude-moon.org) · [HentaiZap](https://hentaizap.com) · [IMHentai](https://imhentai.xxx)
+
+### 国外漫画站
+
+[MangaDex](https://mangadex.org) · [welovemanga](https://nicomanga.com) · [MangaDex](https://mangadex.org) · [welovemanga](https://nicomanga.com)
+
+### Fanbox
+
+[kemono](https://kemono.su) · [nekohouse](https://nekohouse.su) · [kemono](https://kemono.su) · [nekohouse](https://nekohouse.su)
+
+### 其他
+
+[Pixiv](https://www.pixiv.net) · [明日方舟泰拉记事社](https://terra-historicus.hypergryph.com) · [最前線](https://sai-zen-sen.jp) · [Tachidesk](https://github.com/Suwayomi/Tachidesk-Sorayomi) · [LANraragi](https://github.com/Difegue/LANraragi) · [Pixiv](https://www.pixiv.net) · [明日方舟泰拉记事社](https://terra-historicus.hypergryph.com) · [最前線](https://sai-zen-sen.jp) · [Tachidesk](https://github.com/Suwayomi/Tachidesk-Sorayomi) · [LANraragi](https://github.com/Difegue/LANraragi)
 
 <!-- supportSiteList -->
 

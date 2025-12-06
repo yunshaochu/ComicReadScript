@@ -135,36 +135,7 @@ try {
       break;
     }
 
-    // #[Pixiv](https://www.pixiv.net)
-    // test: https://www.pixiv.net/artworks/128841242
-    case 'www.pixiv.net': {
-      let imgList: string[] = [];
-
-      options = {
-        name: 'pixiv',
-        getImgList: () => imgList,
-        SPA: {
-          async isMangaPage() {
-            const id = Number(location.pathname.split('/')[2]);
-            if (!id || !location.pathname.startsWith('/artworks/')) {
-              imgList.length = 0;
-              return false;
-            }
-
-            type resData = { body: { urls: { original: string } }[] };
-            const res = await request<resData>(`/ajax/illust/${id}/pages`, {
-              responseType: 'json',
-            });
-            imgList = res.response.body.map((e) => e.urls.original);
-            return imgList.length > 1;
-          },
-        },
-        initOptions: { autoShow: false, defaultOption: { pageNum: 1 } },
-      };
-      break;
-    }
-
-    // #[再漫画](https://manhua.zaimanhua.com/)
+    // #国内漫画站[再漫画](https://manhua.zaimanhua.com/)
     // test: https://manhua.zaimanhua.com/view/heimaohemonvdeketang/64175/133789
     case 'www.zaimanhua.com':
     case 'manhua.zaimanhua.com': {
@@ -267,53 +238,7 @@ try {
       break;
     }
 
-    // #[明日方舟泰拉记事社](https://terra-historicus.hypergryph.com)
-    // test: https://terra-historicus.hypergryph.com/comic/6253/episode/3156
-    case 'terra-historicus.hypergryph.com': {
-      const apiUrl = () =>
-        `https://terra-historicus.hypergryph.com/api${location.pathname}`;
-
-      const getImgUrl = (i: number) => async () => {
-        const res = await request(`${apiUrl()}/page?pageNum=${i + 1}`);
-        return JSON.parse(res.responseText).data.url as string;
-      };
-
-      options = {
-        name: 'terraHistoricus',
-        wait: () => Boolean(querySelector('.HG_COMIC_READER_main')),
-        async getImgList() {
-          const res = await request<{ data: { pageInfos: unknown[] } }>(
-            apiUrl(),
-            { responseType: 'json' },
-          );
-          const pageList = res.response.data.pageInfos;
-          if (pageList.length === 0 && location.pathname.includes('episode'))
-            throw new Error('获取图片列表时出错');
-
-          return plimit<string>(range(pageList.length, getImgUrl));
-        },
-        SPA: {
-          isMangaPage: () => location.href.includes('episode'),
-          getOnPrev: () => querySelectorClick('footer .HG_COMIC_READER_prev a'),
-          getOnNext: () =>
-            querySelectorClick(
-              'footer .HG_COMIC_READER_prev+.HG_COMIC_READER_buttonEp a',
-            ),
-        },
-      };
-      break;
-    }
-
-    // #[禁漫天堂](https://18comic.vip)
-    // test: https://18comic.vip/photo/1198559
-    case 'siteUrl#jm':
-    case '18comic.org':
-    case '18comic.vip': {
-      inject('site/jm');
-      break;
-    }
-
-    // #[漫画柜(manhuagui)](https://www.manhuagui.com)
+    // #国内漫画站[漫画柜(manhuagui)](https://www.manhuagui.com)
     // test: https://www.manhuagui.com/comic/36584/508218.html
     case 'tw.manhuagui.com':
     case 'm.manhuagui.com':
@@ -382,7 +307,7 @@ try {
       break;
     }
 
-    // #[动漫屋(dm5)](https://www.dm5.com)
+    // #国内漫画站[动漫屋(dm5)](https://www.dm5.com)
     // test: https://www.dm5.cn/m1033552/
     case 'www.manhuaren.com':
     case 'm.1kkk.com':
@@ -461,33 +386,7 @@ try {
       break;
     }
 
-    // #[绅士漫画(wnacg)](https://www.wnacg.com)
-    // test: https://www.wnacg.com/photos-slide-aid-284931.html
-    case 'siteUrl#wnacg':
-    case 'www.wnacg.com':
-    case 'wnacg.com': {
-      // 突出显示下拉阅读的按钮
-      const buttonDom = querySelector('#bodywrap a.btn');
-      if (buttonDom) {
-        buttonDom.style.setProperty('background-color', '#607d8b');
-        buttonDom.style.setProperty('background-image', 'none');
-      }
-
-      if (!Reflect.has(unsafeWindow, 'imglist')) break;
-
-      options = {
-        name: 'wnacg',
-        getImgList: () =>
-          (unsafeWindow.imglist as { url: string; caption: string }[])
-            .filter(
-              ({ caption }) => caption !== '喜歡紳士漫畫的同學請加入收藏哦！',
-            )
-            .map(({ url }) => new URL(url, location.origin).href),
-      };
-      break;
-    }
-
-    // #[mangabz](https://mangabz.com)
+    // #国内漫画站[mangabz](https://mangabz.com)
     // test: https://mangabz.com/m131128/
     case 'www.mangabz.com':
     case 'mangabz.com': {
@@ -552,7 +451,7 @@ try {
       break;
     }
 
-    // #[komiic](https://komiic.com)
+    // #国内漫画站[komiic](https://komiic.com)
     // test: https://komiic.com/comic/2299/chapter/66668/images/all
     case 'komiic.com': {
       const query = `
@@ -607,45 +506,66 @@ try {
       break;
     }
 
-    // #[MangaDex](https://mangadex.org)
-    // test: https://mangadex.org/chapter/4c419c16-ef49-4305-9c46-d3adbe1f60b7
-    case 'mangadex.org': {
+    // #国内漫画站[無限動漫](https://www.8comic.com)
+    // test: 直接访问漫画页会因为 referer 检测不过而被拦截，跳过
+    case '8.twobili.com':
+    case 'a.twobili.com':
+    case 'articles.onemoreplace.tw':
+    case 'www.8comic.com': {
+      if (!/^\/(?:online|ReadComic|comic)\//.test(location.pathname)) break;
+      downloadImgHeaders.Referer = 'https://www.8comic.com/';
+
+      // by: https://sleazyfork.org/zh-CN/scripts/374903-comicread/discussions/241035
+      const getImgList = () =>
+        [...(unsafeWindow.xx as string).matchAll(/(?<= s=").+?(?=")/g)].map(
+          ([text]) => decodeURIComponent(text),
+        );
+
       options = {
-        name: 'mangadex',
-        async getImgList() {
-          const chapter_id = location.pathname.split('/').at(2);
-          const {
-            response: {
-              baseUrl,
-              chapter: { data, hash },
-            },
-          } = await request<{
-            baseUrl: string;
-            chapter: { data: string[]; hash: string };
-          }>(
-            `https://api.mangadex.org/at-home/server/${chapter_id}?forcePort443=false`,
-            { responseType: 'json' },
-          );
-          return data.map((e) => `${baseUrl}/data/${hash}/${e}`);
-        },
-        SPA: {
-          isMangaPage: () => /^\/chapter\/.+/.test(location.pathname),
-          getOnPrev: () =>
-            querySelectorClick(
-              `#chapter-selector > a[href^="/chapter/"]:nth-of-type(1)`,
-            ),
-          getOnNext: () =>
-            querySelectorClick(
-              `#chapter-selector > a[href^="/chapter/"]:nth-of-type(2)`,
-            ),
-          handleUrl: (location) =>
-            location.href.replace(/(?<=\/chapter\/.+?)\/.*/, ''),
-        },
+        name: '8comic',
+        getImgList,
+        onNext: querySelectorClick('#nextvol'),
+        onPrev: querySelectorClick('#prevvol'),
       };
       break;
     }
 
-    // #[NoyAcg](https://noy1.top)
+    // #国内R18[绅士漫画(wnacg)](https://www.wnacg.com)
+    // test: https://www.wnacg.com/photos-slide-aid-284931.html
+    case 'siteUrl#wnacg':
+    case 'www.wnacg.com':
+    case 'wnacg.com': {
+      // 突出显示下拉阅读的按钮
+      const buttonDom = querySelector('#bodywrap a.btn');
+      if (buttonDom) {
+        buttonDom.style.setProperty('background-color', '#607d8b');
+        buttonDom.style.setProperty('background-image', 'none');
+      }
+
+      if (!Reflect.has(unsafeWindow, 'imglist')) break;
+
+      options = {
+        name: 'wnacg',
+        getImgList: () =>
+          (unsafeWindow.imglist as { url: string; caption: string }[])
+            .filter(
+              ({ caption }) => caption !== '喜歡紳士漫畫的同學請加入收藏哦！',
+            )
+            .map(({ url }) => new URL(url, location.origin).href),
+      };
+      break;
+    }
+
+    // #国内R18[禁漫天堂](https://18comic.vip)
+    // test: https://18comic.vip/photo/1198559
+    case 'siteUrl#jm':
+    case '18comic.org':
+    case '18comic.vip': {
+      inject('site/jm');
+      break;
+    }
+
+    // #国内R18[NoyAcg](https://noy1.top)
     // test: https://noy1.top/#/read/13349
     case 'siteUrl#noy':
     case 'noy1.top': {
@@ -670,31 +590,7 @@ try {
       break;
     }
 
-    // #[無限動漫](https://www.8comic.com)
-    // test: 直接访问漫画页会因为 referer 检测不过而被拦截，跳过
-    case '8.twobili.com':
-    case 'a.twobili.com':
-    case 'articles.onemoreplace.tw':
-    case 'www.8comic.com': {
-      if (!/^\/(?:online|ReadComic|comic)\//.test(location.pathname)) break;
-      downloadImgHeaders.Referer = 'https://www.8comic.com/';
-
-      // by: https://sleazyfork.org/zh-CN/scripts/374903-comicread/discussions/241035
-      const getImgList = () =>
-        [...(unsafeWindow.xx as string).matchAll(/(?<= s=").+?(?=")/g)].map(
-          ([text]) => decodeURIComponent(text),
-        );
-
-      options = {
-        name: '8comic',
-        getImgList,
-        onNext: querySelectorClick('#nextvol'),
-        onPrev: querySelectorClick('#prevvol'),
-      };
-      break;
-    }
-
-    // #[熱辣漫畫](https://www.relamanhua.org/)
+    // #国内R18[熱辣漫畫](https://www.relamanhua.org/)
     // test: https://www.relamanhua.org/comic/lianggrendeetaobixianshi/chapter/33cde95c-c8ea-11ea-a67e-00163e0ca5bd
     case 'www.relamanhua.org':
     case 'www.manga2024.com':
@@ -717,29 +613,7 @@ try {
       break;
     }
 
-    // #[hitomi](https://hitomi.la)
-    // test: https://hitomi.la/reader/3427121.html
-    case 'hitomi.la': {
-      options = {
-        name: 'hitomi',
-        wait: () =>
-          (unsafeWindow.galleryinfo as object | undefined) &&
-          Reflect.has(unsafeWindow.galleryinfo, 'files') &&
-          unsafeWindow.galleryinfo.type !== 'anime',
-        getImgList: () =>
-          (unsafeWindow.galleryinfo!.files as object[]).map(
-            (img) =>
-              unsafeWindow.url_from_url_from_hash(
-                unsafeWindow.galleryinfo.id,
-                img,
-                'webp',
-              ) as string,
-          ),
-      };
-      break;
-    }
-
-    // #[hanime1](https://hanime1.me)
+    // #国内R18[hanime1](https://hanime1.me)
     // test: https://hanime1.me/comic/134422
     case 'hanime1.me': {
       if (!location.pathname.startsWith('/comic/')) break;
@@ -761,7 +635,29 @@ try {
       break;
     }
 
-    // #[hdoujin](https://hdoujin.org)
+    // #国外R18[hitomi](https://hitomi.la)
+    // test: https://hitomi.la/reader/3427121.html
+    case 'hitomi.la': {
+      options = {
+        name: 'hitomi',
+        wait: () =>
+          (unsafeWindow.galleryinfo as object | undefined) &&
+          Reflect.has(unsafeWindow.galleryinfo, 'files') &&
+          unsafeWindow.galleryinfo.type !== 'anime',
+        getImgList: () =>
+          (unsafeWindow.galleryinfo!.files as object[]).map(
+            (img) =>
+              unsafeWindow.url_from_url_from_hash(
+                unsafeWindow.galleryinfo.id,
+                img,
+                'webp',
+              ) as string,
+          ),
+      };
+      break;
+    }
+
+    // #国外R18[hdoujin](https://hdoujin.org)
     // test: https://hdoujin.org/g/95756/2d1aa56c3325
     case 'hdoujin.org': {
       if (!location.pathname.startsWith('/g/')) break;
@@ -825,7 +721,7 @@ try {
       break;
     }
 
-    // #[SchaleNetwork](https://schale.network/)
+    // #国外R18[SchaleNetwork](https://schale.network/)
     // test: 有cf验证，跳过
     case 'shupogaki.moe':
     case 'hoshino.one':
@@ -893,38 +789,101 @@ try {
       break;
     }
 
-    // #[nude-moon](https://nude-moon.org)
+    // #国外R18[nude-moon](https://nude-moon.org)
     // test: https://nude-moon.org/22729--zone-himitsu-no-tomodachi--tayney-drug.html
     case 'nude-moon.org': {
       inject('site/nude-moon');
       break;
     }
 
-    // #[kemono](https://kemono.su)
-    // test: https://kemono.cr/fanbox/user/41106591/post/6813818
-    case 'kemono.cr':
-    case 'kemono.su':
-    case 'kemono.party': {
-      inject('site/kemono');
-      break;
-    }
+    // #国外R18[HentaiZap](https://hentaizap.com)
+    // test: https://hentaizap.com/g/1290854/1/
+    case 'hentaizap.com': {
+      if (!location.pathname.startsWith('/g/')) break;
 
-    // #[nekohouse](https://nekohouse.su)
-    // test: https://nekohouse.su/fanbox/user/159912/post/1350453
-    case 'nekohouse.su': {
-      if (!location.pathname.includes('/post/')) break;
       options = {
-        name: 'nekohouse',
-        getImgList: () =>
-          querySelectorAll<HTMLAnchorElement>('.fileThumb').map(
-            (e) => e.getAttribute('href')!,
-          ),
-        initOptions: { autoShow: false, defaultOption: { pageNum: 1 } },
+        name: 'hentaizap',
+        getImgList() {
+          const max = Number(querySelector<HTMLInputElement>('#pages')!.value);
+          const img = querySelector<HTMLImageElement>('#fimg')!;
+          const imgUrl = img.dataset.src || img.src;
+          const baseUrl = imgUrl.split('/').slice(0, -1).join('/');
+          return range(
+            max,
+            (i) =>
+              `${baseUrl}/${i + 1}.${fileType[unsafeWindow.g_th[i + 1].slice(0, 1)]}`,
+          );
+        },
       };
       break;
     }
 
-    // #[welovemanga](https://welovemanga.one)
+    // #国外R18[IMHentai](https://imhentai.xxx)
+    // test: https://imhentai.xxx/gallery/1526168/
+    case 'imhentai.xxx': {
+      if (!location.pathname.startsWith('/gallery/')) break;
+
+      options = {
+        name: 'IMHentai',
+        getImgList() {
+          const [baseUrl] = querySelector(
+            '#append_thumbs a img',
+          )!.dataset.src!.match(/.+\//)!;
+
+          const imgList: MangaProps['imgList'] = [];
+          for (const [i, th] of Object.entries<string>(unsafeWindow.g_th)) {
+            const [t, w, h] = th.split(',');
+            imgList[Number(i) - 1] = {
+              src: `${baseUrl}${i}.${fileType[t]}`,
+              width: Number(w),
+              height: Number(h),
+            };
+          }
+          return imgList;
+        },
+      };
+      break;
+    }
+
+    // #国外漫画站[MangaDex](https://mangadex.org)
+    // test: https://mangadex.org/chapter/4c419c16-ef49-4305-9c46-d3adbe1f60b7
+    case 'mangadex.org': {
+      options = {
+        name: 'mangadex',
+        async getImgList() {
+          const chapter_id = location.pathname.split('/').at(2);
+          const {
+            response: {
+              baseUrl,
+              chapter: { data, hash },
+            },
+          } = await request<{
+            baseUrl: string;
+            chapter: { data: string[]; hash: string };
+          }>(
+            `https://api.mangadex.org/at-home/server/${chapter_id}?forcePort443=false`,
+            { responseType: 'json' },
+          );
+          return data.map((e) => `${baseUrl}/data/${hash}/${e}`);
+        },
+        SPA: {
+          isMangaPage: () => /^\/chapter\/.+/.test(location.pathname),
+          getOnPrev: () =>
+            querySelectorClick(
+              `#chapter-selector > a[href^="/chapter/"]:nth-of-type(1)`,
+            ),
+          getOnNext: () =>
+            querySelectorClick(
+              `#chapter-selector > a[href^="/chapter/"]:nth-of-type(2)`,
+            ),
+          handleUrl: (location) =>
+            location.href.replace(/(?<=\/chapter\/.+?)\/.*/, ''),
+        },
+      };
+      break;
+    }
+
+    // #国外漫画站[welovemanga](https://nicomanga.com)
     // test: https://nicomanga.com/read-yuri-no-hajimari-wa-dorei-kara-chapter-6.2.html
     case 'nicomanga.com':
     case 'weloma.art':
@@ -962,56 +921,97 @@ try {
       break;
     }
 
-    // #[HentaiZap](https://hentaizap.com)
-    // test: https://hentaizap.com/g/1290854/1/
-    case 'hentaizap.com': {
-      if (!location.pathname.startsWith('/g/')) break;
+    // #Fanbox[kemono](https://kemono.su)
+    // test: https://kemono.cr/fanbox/user/41106591/post/6813818
+    case 'kemono.cr':
+    case 'kemono.su':
+    case 'kemono.party': {
+      inject('site/kemono');
+      break;
+    }
+
+    // #Fanbox[nekohouse](https://nekohouse.su)
+    // test: https://nekohouse.su/fanbox/user/159912/post/1350453
+    case 'nekohouse.su': {
+      if (!location.pathname.includes('/post/')) break;
+      options = {
+        name: 'nekohouse',
+        getImgList: () =>
+          querySelectorAll<HTMLAnchorElement>('.fileThumb').map(
+            (e) => e.getAttribute('href')!,
+          ),
+        initOptions: { autoShow: false, defaultOption: { pageNum: 1 } },
+      };
+      break;
+    }
+
+    // #其他[Pixiv](https://www.pixiv.net)
+    // test: https://www.pixiv.net/artworks/128841242
+    case 'www.pixiv.net': {
+      let imgList: string[] = [];
 
       options = {
-        name: 'hentaizap',
-        getImgList() {
-          const max = Number(querySelector<HTMLInputElement>('#pages')!.value);
-          const img = querySelector<HTMLImageElement>('#fimg')!;
-          const imgUrl = img.dataset.src || img.src;
-          const baseUrl = imgUrl.split('/').slice(0, -1).join('/');
-          return range(
-            max,
-            (i) =>
-              `${baseUrl}/${i + 1}.${fileType[unsafeWindow.g_th[i + 1].slice(0, 1)]}`,
+        name: 'pixiv',
+        getImgList: () => imgList,
+        SPA: {
+          async isMangaPage() {
+            const id = Number(location.pathname.split('/')[2]);
+            if (!id || !location.pathname.startsWith('/artworks/')) {
+              imgList.length = 0;
+              return false;
+            }
+
+            type resData = { body: { urls: { original: string } }[] };
+            const res = await request<resData>(`/ajax/illust/${id}/pages`, {
+              responseType: 'json',
+            });
+            imgList = res.response.body.map((e) => e.urls.original);
+            return imgList.length > 1;
+          },
+        },
+        initOptions: { autoShow: false, defaultOption: { pageNum: 1 } },
+      };
+      break;
+    }
+
+    // #其他[明日方舟泰拉记事社](https://terra-historicus.hypergryph.com)
+    // test: https://terra-historicus.hypergryph.com/comic/6253/episode/3156
+    case 'terra-historicus.hypergryph.com': {
+      const apiUrl = () =>
+        `https://terra-historicus.hypergryph.com/api${location.pathname}`;
+
+      const getImgUrl = (i: number) => async () => {
+        const res = await request(`${apiUrl()}/page?pageNum=${i + 1}`);
+        return JSON.parse(res.responseText).data.url as string;
+      };
+
+      options = {
+        name: 'terraHistoricus',
+        wait: () => Boolean(querySelector('.HG_COMIC_READER_main')),
+        async getImgList() {
+          const res = await request<{ data: { pageInfos: unknown[] } }>(
+            apiUrl(),
+            { responseType: 'json' },
           );
+          const pageList = res.response.data.pageInfos;
+          if (pageList.length === 0 && location.pathname.includes('episode'))
+            throw new Error('获取图片列表时出错');
+
+          return plimit<string>(range(pageList.length, getImgUrl));
+        },
+        SPA: {
+          isMangaPage: () => location.href.includes('episode'),
+          getOnPrev: () => querySelectorClick('footer .HG_COMIC_READER_prev a'),
+          getOnNext: () =>
+            querySelectorClick(
+              'footer .HG_COMIC_READER_prev+.HG_COMIC_READER_buttonEp a',
+            ),
         },
       };
       break;
     }
 
-    // #[IMHentai](https://imhentai.xxx)
-    // test: https://imhentai.xxx/gallery/1526168/
-    case 'imhentai.xxx': {
-      if (!location.pathname.startsWith('/gallery/')) break;
-
-      options = {
-        name: 'IMHentai',
-        getImgList() {
-          const [baseUrl] = querySelector(
-            '#append_thumbs a img',
-          )!.dataset.src!.match(/.+\//)!;
-
-          const imgList: MangaProps['imgList'] = [];
-          for (const [i, th] of Object.entries<string>(unsafeWindow.g_th)) {
-            const [t, w, h] = th.split(',');
-            imgList[Number(i) - 1] = {
-              src: `${baseUrl}${i}.${fileType[t]}`,
-              width: Number(w),
-              height: Number(h),
-            };
-          }
-          return imgList;
-        },
-      };
-      break;
-    }
-
-    // #[最前線](https://sai-zen-sen.jp)
+    // #其他[最前線](https://sai-zen-sen.jp)
     // test: https://sai-zen-sen.jp/works/comics/karanokyoukai/01/01.html
     case 'sai-zen-sen.jp': {
       options = {
@@ -1060,8 +1060,8 @@ try {
     }
 
     default: {
-      // #[Tachidesk](https://github.com/Suwayomi/Tachidesk-Sorayomi)
-      // #[LANraragi](https://github.com/Difegue/LANraragi)
+      // #其他[Tachidesk](https://github.com/Suwayomi/Tachidesk-Sorayomi)
+      // #其他[LANraragi](https://github.com/Difegue/LANraragi)
       inject('site/selfhosted');
 
       if (!options) {
