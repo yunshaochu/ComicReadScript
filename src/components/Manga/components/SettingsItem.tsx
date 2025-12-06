@@ -23,6 +23,7 @@ export const SettingsItem: Component<SettingsItemProps> = (props) => (
         : classes.SettingsItem
     }
     classList={{
+      // oxlint-disable-next-line explicit-length-check
       [props.class ?? '']: Boolean(props.class?.length),
       ...props.classList,
     }}

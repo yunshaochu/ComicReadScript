@@ -104,6 +104,7 @@ if (
 ) {
   let initFlag = true;
 
+  // eslint-disable-next-line unused-imports/no-unused-vars
   options = {
     name: 'LANraragi',
     getImgList: () => wait(() => Reader?.pages),

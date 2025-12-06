@@ -23,8 +23,9 @@ import { request, toast, universal } from 'main';
 import { getImglistByHtml } from 'userscript/copyApi';
 import { otherSite } from 'userscript/otherSite';
 
-import { getNhentaiData, toImgList } from './userscript/nhentaiApi';
 import type { RequestDetails } from './request';
+
+import { getNhentaiData, toImgList } from './userscript/nhentaiApi';
 
 /** 站点配置 */
 let options: InitOptions | undefined;

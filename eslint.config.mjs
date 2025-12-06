@@ -82,9 +82,6 @@ export default antfu(
 
       'prefer-promise-reject-errors': 'off',
 
-      'tunused-imports/no-unused-vars': 'off',
-      'unused-imports/no-unused-vars': 'off',
-
       'no-debugger': 'warn',
     },
   },
@@ -113,7 +110,7 @@ export default antfu(
   prettierConflicts,
   ...oxlint.buildFromOxlintConfigFile('./.oxlintrc.json'),
 )
-  .disableRulesFix(['prefer-const', 'unused-imports/no-unused-imports'], {
+  .disableRulesFix(['prefer-const'], {
     builtinRules: () =>
       import('eslint/use-at-your-own-risk').then((r) => r.builtinRules),
   })

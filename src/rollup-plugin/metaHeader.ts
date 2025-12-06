@@ -56,8 +56,9 @@ const getSupportSiteList = () => {
 const categoryMap = new Map<string, Set<string>>();
 
 const updateCategoryMap = () => {
+  categoryMap.clear();
   for (const site of getSupportSiteList().slice(7)) {
-    const match = site.match(/^(.+?)(\[.+)$/);
+    const match = site.match(/^([^[]+)(\[.+)$/);
     if (!match) continue;
     const [, category, link] = match;
     if (!categoryMap.has(category)) categoryMap.set(category, new Set());
@@ -113,7 +114,7 @@ export const getMetaData = (isDevMode: boolean) => {
     namespace: 'ComicRead',
     version: pkg.version,
     description: `${zh.description}${getSupportSiteList()
-      .map((site) => site.replace(/^.*\[(.+)\]\(.+\)/, '$1'))
+      .map((site) => site.replace(/^[^[]*\[([^\]]+)\]\([^)]+\)/, '$1'))
       .join('、')}`,
     'description:en': `${en.description} ${enSupportSite.join(' | ')}`,
     'description:ru': ru.description,
