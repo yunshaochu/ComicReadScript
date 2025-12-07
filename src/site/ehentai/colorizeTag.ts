@@ -74,7 +74,7 @@ export const colorizeTag = async (contextType: EhContext['type']) => {
   switch (contextType) {
     case 'gallery': {
       let css =
-        location.origin === 'https://exhentai.org'
+        getComputedStyle(document.body).backgroundColor === 'rgb(52, 53, 59)'
           ? '--tag: #DDDDDD; --tag-hover: #EEEEEE; --tup: #00E639; --tdn: #FF3333;'
           : '--tag: #5C0D11; --tag-hover: #8F4701; --tup: green; --tdn: red;';
       css = `#taglist { ${css} }\n\n`;
