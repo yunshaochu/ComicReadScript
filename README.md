@@ -205,7 +205,7 @@ Cotrans 也有自己的油猴脚本 —— 「[Cotrans 漫画/图片翻译器](h
 
 ### 国外R18
 
-[hitomi](https://hitomi.la) · [hdoujin](https://hdoujin.org) · [SchaleNetwork](https://schale.network/) · [nude-moon](https://nude-moon.org) · [HentaiZap](https://hentaizap.com) · [IMHentai](https://imhentai.xxx)
+[hitomi](https://hitomi.la) · [hdoujin](https://hdoujin.org) · [SchaleNetwork](https://schale.network/) · [nude-moon](https://nude-moon.org) · [HentaiZap](https://hentaizap.com) · [IMHentai](https://imhentai.xxx) · [HentaiEra](https://hentaiera.com) · [HentaiEnvy](https://hentaienvy.com)
 
 ### 国外漫画站
 

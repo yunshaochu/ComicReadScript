@@ -775,44 +775,34 @@ try {
     }
 
     // #国外R18[HentaiZap](https://hentaizap.com)
-    // test: https://hentaizap.com/g/1290854/1/
-    case 'hentaizap.com': {
-      if (!location.pathname.startsWith('/g/')) break;
-
-      options = {
-        name: 'hentaizap',
-        getImgList() {
-          const max = Number(querySelector<HTMLInputElement>('#pages')!.value);
-          const img = querySelector<HTMLImageElement>('#fimg')!;
-          const imgUrl = img.dataset.src || img.src;
-          const baseUrl = imgUrl.split('/').slice(0, -1).join('/');
-          return range(
-            max,
-            (i) =>
-              `${baseUrl}/${i + 1}.${fileType[unsafeWindow.g_th[i + 1].slice(0, 1)]}`,
-          );
-        },
-      };
-      break;
-    }
-
+    // test: https://hentaizap.com/gallery/1290854/
     // #国外R18[IMHentai](https://imhentai.xxx)
     // test: https://imhentai.xxx/gallery/1526168/
-    case 'imhentai.xxx': {
-      if (!location.pathname.startsWith('/gallery/')) break;
+    // #国外R18[HentaiEra](https://hentaiera.com)
+    // test: https://hentaiera.com/gallery/1506236/
+    // #国外R18[HentaiEnvy](https://hentaienvy.com)
+    // test: https://hentaienvy.com/gallery/1411647/
+    case 'hentaizap.com':
+    case 'imhentai.xxx':
+    case 'hentaiera.com':
+    case 'hentaienvy.com': {
+      const imgDom = querySelector<HTMLImageElement>(
+        ':is(#thumbs_box, #thumbs_gallery_div, #append_thumbs, #ap_thumbs) img[data-src]',
+      );
+      if (!imgDom) break;
+      const imgUrl = imgDom.dataset.src;
+      if (!imgUrl || !unsafeWindow.g_th)
+        throw new Error(t('site.changed_load_failed'));
+      const baseUrl = imgUrl.replace(/\/\dt.[a-z]+$/, '');
 
       options = {
-        name: 'IMHentai',
+        name: 'HentaiEnvy',
         getImgList() {
-          const [baseUrl] = querySelector(
-            '#append_thumbs a img',
-          )!.dataset.src!.match(/.+\//)!;
-
           const imgList: MangaProps['imgList'] = [];
           for (const [i, th] of Object.entries<string>(unsafeWindow.g_th)) {
             const [t, w, h] = th.split(',');
             imgList[Number(i) - 1] = {
-              src: `${baseUrl}${i}.${fileType[t]}`,
+              src: `${baseUrl}/${i}.${fileType[t]}`,
               width: Number(w),
               height: Number(h),
             };
