@@ -1,17 +1,15 @@
 // ==UserScript==
 // @name            ComicRead
 // @namespace       ComicRead
-// @version         12.3.5
-// @description     为漫画站增加双页阅读、翻译等优化体验的增强功能。百合会（记录阅读历史、自动签到等）、百合会新站、动漫之家（解锁隐藏漫画）、E-Hentai（关联外站、快捷收藏、标签染色、识别广告页等）、nhentai（彻底屏蔽漫画、无限滚动）、Yurifans（自动签到）、拷贝漫画(copymanga)（显示最后阅读记录、解锁隐藏漫画）、Pixiv、再漫画、明日方舟泰拉记事社、禁漫天堂、漫画柜(manhuagui)、动漫屋(dm5)、绅士漫画(wnacg)、mangabz、komiic、MangaDex、NoyAcg、無限動漫、熱辣漫畫、hitomi、SchaleNetwork、nude-moon、kemono、nekohouse、welovemanga、HentaiZap、IMHentai、最前線、Tachidesk、LANraragi
-// @description:en  Add enhanced features to the comic site for optimized experience, including dual-page reading and translation. E-Hentai (Associate nhentai, Quick favorite, Colorize tags, Floating tag list, etc.) | nhentai (Totally block comics, Auto page turning) | hitomi | Anchira | kemono | nude-moon | nekohouse | welovemanga.
+// @version         12.4.0
+// @description     为漫画站增加双页阅读、翻译等优化体验的增强功能。百合会（记录阅读历史、自动签到等）、百合会新站、E-Hentai（关联外站、快捷收藏、标签染色、识别广告页等）、nhentai（彻底屏蔽漫画、无限滚动）、Yurifans（自动签到）、拷贝漫画(copymanga)（显示最后阅读记录、解锁隐藏漫画）、再漫画、漫画柜(manhuagui)、动漫屋(dm5)、mangabz、komiic、無限動漫、绅士漫画(wnacg)、禁漫天堂、NoyAcg、熱辣漫畫、hanime1、hitomi、hdoujin、SchaleNetwork、nude-moon、HentaiZap、IMHentai、HentaiEra、HentaiEnvy、MangaDex、welovemanga、kemono、nekohouse、Pixiv、明日方舟泰拉记事社、最前線、Tachidesk、LANraragi
+// @description:en  Add enhanced features to the comic site for optimized experience, including dual-page reading and translation. E-Hentai (Associate nhentai, Quick favorite, Colorize tags, Floating tag list, etc.) | nhentai (Totally block comics, Auto page turning) | hitomi | hdoujin | SchaleNetwork | nude-moon | HentaiZap | IMHentai | HentaiEra | HentaiEnvy | kemono | nekohouse | MangaDex | welovemanga
 // @description:ru  Добавляет расширенные функции для удобства на сайт, такие как двухстраничный режим и перевод.
 // @author          hymbz
 // @license         AGPL-3.0-or-later
 // @noframes
 // @match           *://*/*
 // @connect         yamibo.com
-// @connect         dmzj.com
-// @connect         idmzj.com
 // @connect         exhentai.org
 // @connect         e-hentai.org
 // @connect         hath.network
@@ -215,11 +213,11 @@ const useFaviconProgress = () => {
   //
 };
 
-const en = {alert:{comic_load_error:"Comic loading error",download_failed:"Download failed",fetch_comic_img_failed:"Failed to fetch comic images",img_load_failed:"Image loading failed",no_img_download:"No images available for download",repeat_load:"Loading image, please wait",retry_get_img_url:"Retrieve the URL of the image on page {{i}} again",server_connect_failed:"Unable to connect to the server"},button:{auto_scroll:"Auto scroll",close_current_page_translation:"Close translation of the current page",download_completed:"Download completed",download_completed_error:"Download complete, but {{errorNum}} images failed to download",downloading:"Downloading",fullscreen:"Fullscreen",fullscreen_exit:"Exit Fullscreen",grid_mode:"Grid mode",packaging:"Packaging",page_fill:"Page fill",page_mode_double:"Double page mode",page_mode_single:"Single page mode",scroll_mode:"Scroll mode",translate_current_page:"Translate current page",zoom_in:"Zoom in",zoom_out:"Zoom out"},description:"Add enhanced features to the comic site for optimized experience, including dual-page reading and translation.",eh_tag_lint:{combo:"[tag]: In most cases, Should coexist with [tag]",conflict:"[tag]: Should not coexist with [tag]",correct_tag:"Should be the correct tag",miss_female:"Missing male tag, might need",miss_parody:"Missing parody tag, might need",possible_conflict:"[tag]: In most cases, Should not coexist with [tag]",prerequisite:"[tag]: The prerequisite tag [tag] does not exist"},end_page:{next_button:"Next chapter",prev_button:"Prev chapter",tip:{end_jump:"Reached the last page, scrolling down will jump to the next chapter",exit:"Reached the last page, scrolling down will exit",start_jump:"Reached the first page, scrolling up will jump to the previous chapter"}},hotkeys:{enter_read_mode:"Enter reading mode",float_tag_list:"Floating tag list",jump_to_end:"Jump to the last page",jump_to_home:"Jump to the first page",page_down:"Turn the page to the down",page_up:"Turn the page to the up",repeat_tip:"This hotkey has been bound to \\"{{hotkey}}\\"",scroll_down:"Scroll down",scroll_left:"Scroll left",scroll_right:"Scroll right",scroll_up:"Scroll up",switch_auto_enlarge:"Switch auto image enlarge option",switch_dir:"Switch reading direction",switch_grid_mode:"Switch grid mode",switch_page_fill:"Switch page fill",switch_scroll_mode:"Switch scroll mode",switch_single_double_page_mode:"Switch single/double page mode"},img_status:{error:"Load Error",loading:"Loading",wait:"Waiting for load"},other:{auto:"Auto",custom:"Custom",disable:"Disable",distance:"distance",download:"Download",enabled:"Enabled",enter_comic_read_mode:"Enter comic reading mode",exit:"Exit",fab_hidden:"Hide floating button",fab_show:"Show floating button",fill_page:"Fill Page",hotkeys:"Hotkeys",img_loading:"Image loading",interval:"interval",loading_img:"Loading image",none:"None",or:"or",other:"Other",page_range:"Please enter the page range.:\\n (e.g., 1, 3-5, 9-)",read_mode:"Reading mode",setting:"Settings"},pwa:{alert:{img_data_error:"Image data error",img_not_found:"Image not found",img_not_found_files:"Please select an image file or a compressed file containing image files",img_not_found_folder:"No image files or compressed files containing image files in the folder",not_valid_url:"Not a valid URL",parse_error:"Parsing error",password_error:"Incorrect password",repeat_load:"Loading other files…",userscript_not_installed:"ComicRead userscript not installed"},button:{enter_url:"Enter URL",install:"Install",no_more_prompt:"Do not prompt again",resume_read:"Restore reading",select_files:"Select File",select_folder:"Select folder"},install_md:"### Tired of opening this webpage every time?\\nIf you wish to:\\n1. Have an independent window, as if using local software\\n1. Add to the local compressed file opening method for easy direct opening\\n1. Use offline\\n### Welcome to install this page as a PWA app on your computer😃👍",message:{enter_password:"Please enter your password",parsing:"Parsing"},tip_enter_url:"Please enter the URL of the compressed file",tip_md:"# ComicRead PWA\\nRead **local** comics using [ComicRead](https://github.com/hymbz/ComicReadScript) reading mode.\\n---\\n### Drag and drop image files, folders, or compressed files directly to start reading\\n*You can also choose to **paste directly** or **enter** the URL of the compressed file for downloading and reading*"},setting:{hotkeys:{add:"Add new hotkeys",restore:"Restore default hotkeys"},language:"Language",option:{abreast_duplicate:"Column duplicates ratio",abreast_mode:"Abreast scroll mode",adjust_to_width:"Adaptive Width",align_edge:"Align to edge when turning page",always_load_all_img:"Always load all images",autoFullscreen:"Auto fullscreen",autoHiddenMouse:"Auto hide mouse",auto_scale:"Auto Scale",auto_scroll_trigger_end:"Continue scrolling on the end page",auto_switch_page_mode:"Auto switch single/double page mode by aspect ratio",background_color:"Background Color",click_page_turn_area:"Touch area",click_page_turn_enabled:"Click to turn page",click_page_turn_swap_area:"Swap LR clickable areas",dark_mode:"Dark mode",dark_mode_auto:"Dark mode follow system",dir_ltr:"LTR (American comics)",dir_rtl:"RTL (Japanese manga)",disable_auto_enlarge:"Disable automatic image enlarge",first_page_fill:"Enable first page fill by default",full_width:"Viewport Width",img_recognition:"Image Recognition",img_recognition_background:"Recognition background color",img_recognition_pageFill:"Auto switch page fill",img_recognition_warn:"❗ The current browser does not support Web Workers. Enabling this feature may cause page lag. It's recommended to upgrade or switch browsers.",img_recognition_warn_2:"❗ The current website does not support Web Workers. Enabling this feature may cause page lag.",paragraph_appearance:"Appearance",paragraph_dir:"Reading direction",paragraph_display:"Display",paragraph_scrollbar:"Scrollbar",paragraph_translation:"Translation",preload_page_num:"Preload page number",scroll_end:"After reaching the End",scroll_end_auto:"First jump to previous/next chapter, else exit",scroll_mode_img_scale:"Scroll mode image zoom ratio",scroll_mode_img_spacing:"Scroll mode image spacing",scrollbar_auto_hidden:"Auto hide",scrollbar_easy_scroll:"Easy scroll",scrollbar_position:"position",scrollbar_position_bottom:"Bottom",scrollbar_position_hidden:"Hidden",scrollbar_position_right:"Right",scrollbar_position_top:"Top",scrollbar_show_img_status:"Show image loading status",show_clickable_area:"Show clickable areas",show_comments:"Show comments on the end page",shrink_menu:"Enable menu area",swap_page_turn_key:"Swap LR page-turning keys",zoom:"Image zoom ratio"},sync_options_other_site:"Sync read options to other sites",translation:{cotrans_tip:"<p>Using the interface provided by <a href=\\"https://cotrans.touhou.ai\\" target=\\"_blank\\">Cotrans</a> to translate images, which is maintained by its maintainer at their own expense.</p>\\n<p>When multiple people use it at the same time, they need to queue and wait. If the waiting queue reaches its limit, uploading new images will result in an error. Please try again after a while.</p>\\n<p>So please <b>mind the frequency of use</b>.</p>\\n<p>It is highly recommended to use your own locally deployed project, as it does not consume server resources and does not require queuing.</p>",options:{box_threshold:"Box threshold",detection_resolution:"Text detection resolution",direction:"Render text orientation",direction_auto:"Follow source",direction_horizontal:"Horizontal only",direction_vertical:"Vertical only",force_retry:"Force retry (ignore cache)",inpainter:"Inpainter",inpainting_size:"Inpainting size",local_url:"customize server URL",mask_dilation_offset:"Mask dilation offset",only_download_translated:"Download only the translated images",target_language:"Target language",text_detector:"Text detector",translator:"Translator",unclip_ratio:"Unclip ratio"},range:"Scope of Translation",server:"Translation server",server_selfhosted:"Selfhosted",translate_all:"Translate all images",translate_to_end:"Translate the current page to the end"}},site:{add_feature:{add_hotkeys_actions:"Add hotkeys actions",auto_adjust_option:"Auto adjust reading option",auto_page_turn:"Infinite scroll",auto_show:"Auto enter reading mode",block_totally:"Totally block comics",colorize_tag:"Colorize tags",cross_site_link:"Cross-site Link",detect_ad:"Detect advertise page",expand_tag_list:"Expand tag list",float_tag_list:"Floating tag list",load_original_image:"Load original image",lock_option:"Lock site option",open_link_new_page:"Open links in a new page",quick_favorite:"Quick favorite",quick_rating:"Quick rating",quick_tag_define:"Quick view tag define",remember_current_site:"Remember the current site",tag_lint:"Tag Lint"},changed_load_failed:"The website has undergone changes, unable to load comics",ehentai:{change_favorite_failed:"Failed to change the favorite",change_favorite_success:"Successfully changed the favorite",change_rating_failed:"Failed to change the rating",change_rating_success:"Successfully changed the rating",fetch_favorite_failed:"Failed to get favorite info",fetch_img_page_source_failed:"Failed to get the source code of the image page",fetch_img_page_url_failed:"Failed to get the image page address from the detail page",fetch_img_url_failed:"Failed to get the image address from the image page",hitomi_error:"hitomi matching error",html_changed_link_failed:"The page structure has changed, and the associated external site features are not functioning properly",ip_banned:"IP address is banned",nhentai_error:"nhentai matching error",nhentai_failed:"Matching failed, please refresh after confirming login to {{nhentai}}"},nhentai:{fetch_next_page_failed:"Failed to get next page of comic data",tag_blacklist_fetch_failed:"Failed to fetch tag blacklist"},show_settings_menu:"Show settings menu",simple:{auto_read_mode_message:"\\"Auto enter reading mode\\" is enabled by default",no_img:"No suitable comic images were found.\\nIf necessary, you can click here to close the simple reading mode.",simple_read_mode:"Enter simple reading mode"}},touch_area:{menu:"Menu",type:{edge:"Edge",l:"L",left_right:"Left Right",up_down:"Up Down"}},translation:{status:{colorizing:"Colorizing","default":"Unknown status",detection:"Detecting text",downscaling:"Downscaling",error:"Error during translation","error-lang":"The target language is not supported by the chosen translator","error-translating":"Did not get any text back from the text translation service","error-with-id":"Error during translation",finished:"Finishing",inpainting:"Inpainting","mask-generation":"Generating mask",ocr:"Scanning text",pending:"Pending","pending-pos":"Pending",preparing:"Waiting for idle window",rendering:"Rendering",saved:"Saved","skip-no-regions":"No text regions detected in the image","skip-no-text":"No text detected in the image",textline_merge:"Merging text lines",translating:"Translating",upscaling:"Upscaling"},tip:{check_img_status_failed:"Failed to check image status",download_img_failed:"Failed to download image",get_translator_list_error:"Error occurred while getting the list of available translation services",id_not_returned:"No id returned",img_downloading:"Downloading images",img_not_fully_loaded:"Image has not finished loading",pending:"Pending, {{pos}} in queue",resize_img_failed:"Failed to resize image",translating:"Translating image",translation_completed:"Translation completed",upload:"Uploading image",upload_error:"Image upload error",upload_return_error:"Error during server translation",wait_translation:"Waiting for translation"},translator:{baidu:"baidu",deepl:"DeepL",google:"Google","gpt3.5":"GPT-3.5",none:"Remove texts",offline:"offline translator",original:"Original",youdao:"youdao"}},upscale:{module_download_complete:"Image Upscaling Model Download Complete",module_download_failed:"Image Upscaling Model Download Failed",module_downloading:"Image Upscaling Model Downloading...",title:"Upscale Image",upscaled:"upscaled",upscaling:"upscaling",webgpu_tip:"Unable to upscale images using WebGPU, processing will be slower"}};
+const en = {alert:{comic_load_error:"Comic loading error",download_failed:"Download failed",fetch_comic_img_failed:"Failed to fetch comic images",img_load_failed:"Image loading failed",no_img_download:"No images available for download",repeat_load:"Loading image, please wait",retry_get_img_url:"Retrieve the URL of the image on page {{i}} again",server_connect_failed:"Unable to connect to the server"},button:{auto_scroll:"Auto scroll",close_current_page_translation:"Close translation of the current page",download_completed:"Download completed",download_completed_error:"Download complete, but {{errorNum}} images failed to download",downloading:"Downloading",fullscreen:"Fullscreen",fullscreen_exit:"Exit Fullscreen",grid_mode:"Grid mode",packaging:"Packaging",page_fill:"Page fill",page_mode_double:"Double page mode",page_mode_single:"Single page mode",scroll_mode:"Scroll mode",translate_current_page:"Translate current page",zoom_in:"Zoom in",zoom_out:"Zoom out"},description:"Add enhanced features to the comic site for optimized experience, including dual-page reading and translation.",eh_tag_lint:{combo:"[tag]: In most cases, Should coexist with [tag]",conflict:"[tag]: Should not coexist with [tag]",correct_tag:"Should be the correct tag",miss_female:"Missing male tag, might need",miss_parody:"Missing parody tag, might need",possible_conflict:"[tag]: In most cases, Should not coexist with [tag]",prerequisite:"[tag]: The prerequisite tag [tag] does not exist"},end_page:{next_button:"Next chapter",prev_button:"Prev chapter",tip:{end_jump:"Reached the last page, scrolling down will jump to the next chapter",exit:"Reached the last page, scrolling down will exit",start_jump:"Reached the first page, scrolling up will jump to the previous chapter"}},hotkeys:{enter_read_mode:"Enter reading mode",float_tag_list:"Floating tag list",jump_next:"Jump to next chap",jump_prev:"Jump to previous chap",jump_to_end:"Jump to the last page",jump_to_home:"Jump to the first page",page_down:"Turn the page to the down",page_up:"Turn the page to the up",repeat_tip:"This hotkey has been bound to \\"{{hotkey}}\\"",scroll_down:"Scroll down",scroll_left:"Scroll left",scroll_right:"Scroll right",scroll_up:"Scroll up",switch_auto_enlarge:"Switch auto image enlarge option",switch_dir:"Switch reading direction",switch_grid_mode:"Switch grid mode",switch_page_fill:"Switch page fill",switch_scroll_mode:"Switch scroll mode",switch_single_double_page_mode:"Switch single/double page mode"},img_status:{error:"Load Error",loading:"Loading",wait:"Waiting for load"},other:{auto:"Auto",custom:"Custom",disable:"Disable",distance:"distance",download:"Download",enabled:"Enabled",enter_comic_read_mode:"Enter comic reading mode",exit:"Exit",fab_hidden:"Hide floating button",fab_show:"Show floating button",fill_page:"Fill Page",hotkeys:"Hotkeys",img_loading:"Image loading",interval:"interval",loading_img:"Loading image",none:"None",or:"or",other:"Other",page_range:"Please enter the page range.:\\n (e.g., 1, 3-5, 9-)",read_mode:"Reading mode",setting:"Settings"},pwa:{alert:{img_data_error:"Image data error",img_not_found:"Image not found",img_not_found_files:"Please select an image file or a compressed file containing image files",img_not_found_folder:"No image files or compressed files containing image files in the folder",not_valid_url:"Not a valid URL",parse_error:"Parsing error",password_error:"Incorrect password",repeat_load:"Loading other files…",userscript_not_installed:"ComicRead userscript not installed"},button:{enter_url:"Enter URL",install:"Install",no_more_prompt:"Do not prompt again",resume_read:"Restore reading",select_files:"Select File",select_folder:"Select folder"},install_md:"### Tired of opening this webpage every time?\\nIf you wish to:\\n1. Have an independent window, as if using local software\\n1. Add to the local compressed file opening method for easy direct opening\\n1. Use offline\\n### Welcome to install this page as a PWA app on your computer😃👍",message:{enter_password:"Please enter your password",parsing:"Parsing"},tip_enter_url:"Please enter the URL of the compressed file",tip_md:"# ComicRead PWA\\nRead **local** comics using [ComicRead](https://github.com/hymbz/ComicReadScript) reading mode.\\n---\\n### Drag and drop image files, folders, or compressed files directly to start reading\\n*You can also choose to **paste directly** or **enter** the URL of the compressed file for downloading and reading*"},setting:{hotkeys:{add:"Add new hotkeys",restore:"Restore default hotkeys"},language:"Language",option:{abreast_duplicate:"Column duplicates ratio",abreast_mode:"Abreast scroll mode",adjust_to_width:"Adaptive Width",align_edge:"Align to edge when turning page",always_load_all_img:"Always load all images",autoFullscreen:"Auto fullscreen",autoHiddenMouse:"Auto hide mouse",auto_scale:"Auto Scale",auto_scroll_trigger_end:"Continue scrolling on the end page",auto_switch_page_mode:"Auto switch single/double page mode by aspect ratio",background_color:"Background Color",click_page_turn_area:"Touch area",click_page_turn_enabled:"Click to turn page",click_page_turn_swap_area:"Swap LR clickable areas",dark_mode:"Dark mode",dark_mode_auto:"Dark mode follow system",dir_ltr:"LTR (American comics)",dir_rtl:"RTL (Japanese manga)",disable_auto_enlarge:"Disable automatic image enlarge",first_page_fill:"Enable first page fill by default",full_width:"Viewport Width",img_recognition:"Image Recognition",img_recognition_background:"Recognition background color",img_recognition_pageFill:"Auto switch page fill",img_recognition_warn:"❗ The current browser does not support Web Workers. Enabling this feature may cause page lag. It's recommended to upgrade or switch browsers.",img_recognition_warn_2:"❗ The current website does not support Web Workers. Enabling this feature may cause page lag.",paragraph_appearance:"Appearance",paragraph_dir:"Reading direction",paragraph_display:"Display",paragraph_scrollbar:"Scrollbar",paragraph_translation:"Translation",preload_page_num:"Preload page number",scroll_end:"After reaching the End",scroll_end_auto:"First jump to previous/next chapter, else exit",scroll_mode_img_scale:"Scroll mode image zoom ratio",scroll_mode_img_spacing:"Scroll mode image spacing",scrollbar_auto_hidden:"Auto hide",scrollbar_easy_scroll:"Easy scroll",scrollbar_position:"position",scrollbar_position_bottom:"Bottom",scrollbar_position_hidden:"Hidden",scrollbar_position_right:"Right",scrollbar_position_top:"Top",scrollbar_show_img_status:"Show image loading status",show_clickable_area:"Show clickable areas",show_comments:"Show comments on the end page",shrink_menu:"Enable menu area",swap_page_turn_key:"Swap LR page-turning keys",zoom:"Image zoom ratio"},sync_options_other_site:"Sync read options to other sites",translation:{cotrans_tip:"<p>Using the interface provided by <a href=\\"https://cotrans.touhou.ai\\" target=\\"_blank\\">Cotrans</a> to translate images, which is maintained by its maintainer at their own expense.</p>\\n<p>When multiple people use it at the same time, they need to queue and wait. If the waiting queue reaches its limit, uploading new images will result in an error. Please try again after a while.</p>\\n<p>So please <b>mind the frequency of use</b>.</p>\\n<p>It is highly recommended to use your own locally deployed project, as it does not consume server resources and does not require queuing.</p>",options:{box_threshold:"Box threshold",detection_resolution:"Text detection resolution",direction:"Render text orientation",direction_auto:"Follow source",direction_horizontal:"Horizontal only",direction_vertical:"Vertical only",force_retry:"Force retry (ignore cache)",inpainter:"Inpainter",inpainting_size:"Inpainting size",local_url:"customize server URL",mask_dilation_offset:"Mask dilation offset",only_download_translated:"Download only the translated images",target_language:"Target language",text_detector:"Text detector",translator:"Translator",unclip_ratio:"Unclip ratio"},range:"Scope of Translation",server:"Translation server",server_selfhosted:"Selfhosted",translate_all:"Translate all images",translate_to_end:"Translate the current page to the end"}},site:{add_feature:{add_hotkeys_actions:"Add hotkeys actions",auto_adjust_option:"Auto adjust reading option",auto_page_turn:"Infinite scroll",auto_show:"Auto enter reading mode",block_totally:"Totally block comics",colorize_tag:"Colorize tags",cross_site_link:"Cross-site Link",detect_ad:"Detect advertise page",expand_tag_list:"Expand tag list",float_tag_list:"Floating tag list",load_original_image:"Load original image",lock_option:"Lock site option",open_link_new_page:"Open links in a new page",quick_favorite:"Quick favorite",quick_rating:"Quick rating",quick_tag_define:"Quick view tag define",remember_current_site:"Remember the current site",tag_lint:"Tag Lint"},changed_load_failed:"The website has undergone changes, unable to load comics",ehentai:{change_favorite_failed:"Failed to change the favorite",change_favorite_success:"Successfully changed the favorite",change_rating_failed:"Failed to change the rating",change_rating_success:"Successfully changed the rating",fetch_favorite_failed:"Failed to get favorite info",fetch_img_page_source_failed:"Failed to get the source code of the image page",fetch_img_page_url_failed:"Failed to get the image page address from the detail page",fetch_img_url_failed:"Failed to get the image address from the image page",hitomi_error:"hitomi matching error",html_changed_link_failed:"The page structure has changed, and the associated external site features are not functioning properly",ip_banned:"IP address is banned",nhentai_error:"nhentai matching error",nhentai_failed:"Matching failed, please refresh after confirming login to {{nhentai}}"},nhentai:{fetch_next_page_failed:"Failed to get next page of comic data",tag_blacklist_fetch_failed:"Failed to fetch tag blacklist"},show_settings_menu:"Show settings menu",simple:{auto_read_mode_message:"\\"Auto enter reading mode\\" is enabled by default",no_img:"No suitable comic images were found.\\nIf necessary, you can click here to close the simple reading mode.",simple_read_mode:"Enter simple reading mode"}},touch_area:{menu:"Menu",type:{edge:"Edge",l:"L",left_right:"Left Right",up_down:"Up Down"}},translation:{status:{colorizing:"Colorizing","default":"Unknown status",detection:"Detecting text",downscaling:"Downscaling",error:"Error during translation","error-lang":"The target language is not supported by the chosen translator","error-translating":"Did not get any text back from the text translation service","error-with-id":"Error during translation",finished:"Finishing",inpainting:"Inpainting","mask-generation":"Generating mask",ocr:"Scanning text",pending:"Pending","pending-pos":"Pending",preparing:"Waiting for idle window",rendering:"Rendering",saved:"Saved","skip-no-regions":"No text regions detected in the image","skip-no-text":"No text detected in the image",textline_merge:"Merging text lines",translating:"Translating",upscaling:"Upscaling"},tip:{check_img_status_failed:"Failed to check image status",download_img_failed:"Failed to download image",get_translator_list_error:"Error occurred while getting the list of available translation services",id_not_returned:"No id returned",img_downloading:"Downloading images",img_not_fully_loaded:"Image has not finished loading",pending:"Pending, {{pos}} in queue",resize_img_failed:"Failed to resize image",translating:"Translating image",translation_completed:"Translation completed",upload:"Uploading image",upload_error:"Image upload error",upload_return_error:"Error during server translation",wait_translation:"Waiting for translation"},translator:{baidu:"baidu",deepl:"DeepL",google:"Google","gpt3.5":"GPT-3.5",none:"Remove texts",offline:"offline translator",original:"Original",youdao:"youdao"}},upscale:{module_download_complete:"Image Upscaling Model Download Complete",module_download_failed:"Image Upscaling Model Download Failed",module_downloading:"Image Upscaling Model Downloading...",title:"Upscale Image",upscaled:"upscaled",upscaling:"upscaling",webgpu_tip:"Unable to upscale images using WebGPU, processing will be slower"}};
 
-const ru = {alert:{comic_load_error:"Ошибка загрузки комикса",download_failed:"Ошибка загрузки",fetch_comic_img_failed:"Не удалось загрузить изображения",img_load_failed:"Не удалось загрузить изображение",no_img_download:"Нет доступных картинок для загрузки",repeat_load:"Загрузка изображения, пожалуйста подождите",retry_get_img_url:"Повторно получить адрес изображения на странице {{i}}",server_connect_failed:"Не удалось подключиться к серверу"},button:{auto_scroll:"Автопрокрутка",close_current_page_translation:"Скрыть перевод текущей страницы",download_completed:"Загрузка завершена",download_completed_error:"Загрузка завершена, но {{errorNum}} изображений не удалось загрузить",downloading:"Скачивание",fullscreen:"полноэкранный",fullscreen_exit:"выйти из полноэкранного режима",grid_mode:"Режим сетки",packaging:"Упаковка",page_fill:"Заполнить страницу",page_mode_double:"Двухчастичный режим",page_mode_single:"Одностраничный режим",scroll_mode:"Режим прокрутки",translate_current_page:"Перевести текущую страницу",zoom_in:"Приблизить",zoom_out:"Уменьшить"},description:"Добавляет расширенные функции для удобства на сайт, такие как двухстраничный режим и перевод.",eh_tag_lint:{combo:"[тег]: В большинстве случаев должен сосуществовать с [тегом]",conflict:"[tag]: Не должен сосуществовать с [tag]",correct_tag:"Должен быть правильный тег",miss_female:"Отсутствует мужской тег, возможно, понадобится",miss_parody:"Отсутствует тег пародии, возможно, понадобится",possible_conflict:"[tag]: В большинстве случаев не должен сосуществовать с [tag]",prerequisite:"[tag]: Предварительный тег [tag] не существует"},end_page:{next_button:"Следующая глава",prev_button:"Предыдущая глава",tip:{end_jump:"Последняя страница, следующая глава ниже",exit:"Последняя страница, ниже комикс будет закрыт",start_jump:"Первая страница, выше будет загружена предыдущая глава"}},hotkeys:{enter_read_mode:"Режим чтения",float_tag_list:"Плавающий список тегов",jump_to_end:"Перейти к последней странице",jump_to_home:"Перейти к первой странице",page_down:"Перелистнуть страницу вниз",page_up:"Перелистнуть страницу вверх",repeat_tip:"Эта горячая клавиша была назначена на \\"{{hotkey}}\\"",scroll_down:"Прокрутить вниз",scroll_left:"Прокрутить влево",scroll_right:"Прокрутите вправо",scroll_up:"Прокрутите вверх",switch_auto_enlarge:"Автоматическое приближение",switch_dir:"Направление чтения",switch_grid_mode:"Режим сетки",switch_page_fill:"Заполнение страницы",switch_scroll_mode:"Режим прокрутки",switch_single_double_page_mode:"Одностраничный/Двухстраничный режим"},img_status:{error:"Ошибка загрузки",loading:"Загрузка",wait:"Ожидание загрузки"},other:{auto:"Авто",custom:"Custom",disable:"Отключить",distance:"расстояние",download:"Скачать",enabled:"Включено",enter_comic_read_mode:"Режим чтения комиксов",exit:"Выход",fab_hidden:"Скрыть плавающую кнопку",fab_show:"Показать плавающую кнопку",fill_page:"Заполнить страницу",hotkeys:"Горячие клавиши",img_loading:"Изображение загружается",interval:"интервал",loading_img:"Загрузка изображения",none:"Отсутствует",or:"или",other:"Другое",page_range:"Введите диапазон страниц.:\\n (например, 1, 3-5, 9-)",read_mode:"Режим чтения",setting:"Настройки"},pwa:{alert:{img_data_error:"Ошибка данных изображения",img_not_found:"Изображение не найдено",img_not_found_files:"Пожалуйста выберите файл или архив с изображениями",img_not_found_folder:"В папке не найдены изображения или архивы с изображениями",not_valid_url:"Невалидный URL",parse_error:"Ошибка анализа",password_error:"Неверный пароль",repeat_load:"Загрузка других файлов…",userscript_not_installed:"ComicRead не установлен"},button:{enter_url:"Ввести URL",install:"Установить",no_more_prompt:"Больше не показывать",resume_read:"Продолжить чтение",select_files:"Выбрать файл",select_folder:"Выбрать папку"},install_md:"### Устали открывать эту страницу каждый раз?\\nЕсли вы хотите:\\n1. Иметь отдельное окно, как если бы вы использовали обычное программное обеспечение\\n1. Открывать архивы напрямую\\n1. Пользоваться оффлайн\\n### Установите эту страницу в качестве [PWA](https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B5%D1%81%D1%81%D0%B8%D0%B2%D0%BD%D0%BE%D0%B5_%D0%B2%D0%B5%D0%B1-%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5) на свой компьютер 🐺☝️",message:{enter_password:"Пожалуйста введите пароль",parsing:"Разбор"},tip_enter_url:"Введите URL архива",tip_md:"# ComicRead PWA\\nИспользуйте [ComicRead](https://github.com/hymbz/ComicReadScript) для чтения комиксов **локально**.\\n---\\n### Перетащите изображения, папки или архивы чтобы начать читать\\n*Вы так же можете **открыть** или **вставить** URL архива на напрямую*"},setting:{hotkeys:{add:"Добавить горячие клавиши",restore:"Восстановить горячие клавиши по умолчанию"},language:"Язык",option:{abreast_duplicate:"Коэффициент дублирования столбцов",abreast_mode:"Режим прокрутки в ряд",adjust_to_width:"Адаптивная ширина",align_edge:"Выравнивание по краю при перелистывании страницы",always_load_all_img:"Всегда загружать все изображения",autoFullscreen:"Авто полный экран",autoHiddenMouse:"Автоматически скрывать курсор мыши",auto_scale:"Авто масштаб",auto_scroll_trigger_end:"Продолжить прокрутку на конечной странице",auto_switch_page_mode:"Автоматическое переключение режима одной/двойной страницы в зависимости от соотношения сторон",background_color:"Цвет фона",click_page_turn_area:"Область нажатия",click_page_turn_enabled:"Перелистывать по клику",click_page_turn_swap_area:"Поменять местами правую и левую области переключения страниц",dark_mode:"Тёмная тема",dark_mode_auto:"Тёмный режим следует за системой",dir_ltr:"Чтение слева направо (Американские комиксы)",dir_rtl:"Чтение справа налево (Японская манга)",disable_auto_enlarge:"Отключить автоматическое масштабирование изображений",first_page_fill:"Включить заполнение первой страницы по умолчанию",full_width:"Ширина окна просмотра",img_recognition:"распознавание изображений",img_recognition_background:"Определить цвет фона",img_recognition_pageFill:"Автоматическое переключение заполнения страницы",img_recognition_warn:"❗ Текущий браузер не поддерживает Web Workers. Включение этой функции может вызвать задержку страницы. Рекомендуется обновить или сменить браузер.",img_recognition_warn_2:"❗ Текущий веб-сайт не поддерживает Web Workers. Включение этой функции может привести к задержке страницы.",paragraph_appearance:"Внешность",paragraph_dir:"Направление чтения",paragraph_display:"Отображение",paragraph_scrollbar:"Полоса прокрутки",paragraph_translation:"Перевод",preload_page_num:"Предзагружать страниц",scroll_end:"После достижения конца",scroll_end_auto:"Сначала переход к предыдущей/следующей главе, иначе выход",scroll_mode_img_scale:"Коэффициент масштабирования изображения в режиме скроллинга",scroll_mode_img_spacing:"Расстояние между страницами в режиме скроллинга",scrollbar_auto_hidden:"Автоматически скрывать",scrollbar_easy_scroll:"Лёгкая прокрутка",scrollbar_position:"Позиция",scrollbar_position_bottom:"Снизу",scrollbar_position_hidden:"Спрятано",scrollbar_position_right:"Справа",scrollbar_position_top:"Сверху",scrollbar_show_img_status:"Показывать статус загрузки изображения",show_clickable_area:"Показывать кликабельные области",show_comments:"Показывать комментарии на последней странице",shrink_menu:"Включить область меню",swap_page_turn_key:"Поменять местами клавиши переключения страниц",zoom:"Коэффициент масштабирования изображения"},sync_options_other_site:"Синхронизировать настройки чтения с другими сайтами",translation:{cotrans_tip:"<p>Использует для перевода <a href=\\"https://cotrans.touhou.ai\\" target=\\"_blank\\">Cotrans API</a>, работающий исключительно за счёт своего создателя.</p>\\n<p>Запросы обрабатываются по одному в порядке синхронной очереди. Когда очередь превышает лимит новые запросы будут приводить к ошибке. Если такое случилось попробуйте позже.</p>\\n<p>Так что пожалуйста <b>учитывайте загруженность при выборе</b></p>\\n<p>Настоятельно рекомендовано использовать проект развёрнутый локально т.к. это не потребляет серверные ресурсы и вы не ограничены очередью.</p>",options:{box_threshold:"Порог коробки",detection_resolution:"Разрешение распознавания текста",direction:"Ориетнация текста",direction_auto:"Следование оригиналу",direction_horizontal:"Только горизонтально",direction_vertical:"Только вертикально",force_retry:"Принудительный повтор(Игнорировать кэш)",inpainter:"Инпейнтер",inpainting_size:"Инпейнтинг размер области",local_url:"Настроить URL сервера",mask_dilation_offset:"Маскировочное смещение дилатации",only_download_translated:"Скачать только переведённые изображения",target_language:"Целевой язык",text_detector:"Детектор текста",translator:"Переводчик",unclip_ratio:"Необрезанное соотношение"},range:"Объем перевода",server:"Сервер",server_selfhosted:"Свой",translate_all:"Перевести все изображения",translate_to_end:"Переводить страницу до конца"}},site:{add_feature:{add_hotkeys_actions:"Добавить операции с горячими клавишами",auto_adjust_option:"Автоматическая настройка параметра чтения",auto_page_turn:"Бесконечная прокрутка",auto_show:"Автоматически включать режим чтения",block_totally:"Глобально заблокировать комиксы",colorize_tag:"Цветные названия",cross_site_link:"Кросс-сайтовая ссылка",detect_ad:"Detect advertise page",expand_tag_list:"Развернуть список тегов",float_tag_list:"Плавающий список тегов",load_original_image:"Загружать оригинальное изображение",lock_option:"Блокировка опции сайта",open_link_new_page:"Открывать ссылки в новой вкладке",quick_favorite:"Быстрый фаворит",quick_rating:"Быстрый рейтинг",quick_tag_define:"Определение тега быстрого просмотра",remember_current_site:"Запомнить текущий сайт",tag_lint:"Тэг Линт"},changed_load_failed:"Страница изменилась, невозможно загрузить комикс",ehentai:{change_favorite_failed:"Не удалось изменить избранное",change_favorite_success:"Избранное успешно изменено",change_rating_failed:"Не удалось изменить оценку",change_rating_success:"Успешно изменен рейтинг",fetch_favorite_failed:"Не удалось получить информацию о избранном",fetch_img_page_source_failed:"Не удалось получить исходный код страницы с изображениями",fetch_img_page_url_failed:"Не удалось получить адрес страницы изображений из деталей",fetch_img_url_failed:"Не удалось получить адрес изображения",hitomi_error:"Ошибка сопоставления hitomi",html_changed_link_failed:"Структура страницы изменилась, и связанные функции внешнего сайта не работают должным образом",ip_banned:"IP адрес забанен",nhentai_error:"Ошибка сопоставления nhentai",nhentai_failed:"Ошибка сопостовления. Пожалуйста перезагрузите страницу после входа на {{nhentai}}"},nhentai:{fetch_next_page_failed:"Не удалось получить следующую страницу",tag_blacklist_fetch_failed:"Не удалось получить заблокированные теги"},show_settings_menu:"Показать меню настроек",simple:{auto_read_mode_message:"\\"Автоматически включать режим чтения\\" по умолчанию",no_img:"Не найдено подходящих изображений. Нажмите тут что бы выключить режим простого чтения.",simple_read_mode:"Включить простой режим чтения"}},touch_area:{menu:"Меню",type:{edge:"Грань",l:"L",left_right:"Лево Право",up_down:"Верх Низ"}},translation:{status:{colorizing:"Раскрашивание","default":"Неизвестный статус",detection:"Распознавание текста",downscaling:"Уменьшение масштаба",error:"Ошибка перевода","error-lang":"Целевой язык не поддерживается выбранным переводчиком","error-translating":"Ошибка перевода(пустой ответ)","error-with-id":"Ошибка во время перевода",finished:"Завершение",inpainting:"Наложение","mask-generation":"Генерация маски",ocr:"Распознавание текста",pending:"Ожидание","pending-pos":"Ожидание",preparing:"Ожидание окна бездействия",rendering:"Отрисовка",saved:"Сохранено","skip-no-regions":"На изображении не обнаружено текстовых областей.","skip-no-text":"Текст на изображении не обнаружен",textline_merge:"Обьединение текста",translating:"Переводится",upscaling:"Увеличение изображения"},tip:{check_img_status_failed:"Не удалось проверить статус изображения",download_img_failed:"Не удалось скачать изображение",get_translator_list_error:"Произошла ошибка во время получения списка доступных переводчиков",id_not_returned:"ID не вернули(",img_downloading:"Скачать",img_not_fully_loaded:"Изображение всё ещё загружается",pending:"Ожидение, позиция в очереди {{pos}}",resize_img_failed:"Не удалось изменить размер изображения",translating:"Изображение переводится",translation_completed:"Перевод завершён",upload:"Загрузка изображения",upload_error:"Ошибка отправки изображения",upload_return_error:"Ошибка перевода на сервере",wait_translation:"Ожидание перевода"},translator:{baidu:"baidu",deepl:"DeepL",google:"Google","gpt3.5":"GPT-3.5",none:"Убрать текст",offline:"Оффлайн переводчик",original:"Оригинал",youdao:"youdao"}},upscale:{module_download_complete:"Загрузка модели увеличения изображений завершена",module_download_failed:"Сбой загрузки модели увеличения изображений",module_downloading:"Загрузка модели увеличения изображений...",title:"Увеличение изображения",upscaled:"Увеличенный",upscaling:"Увеличивается",webgpu_tip:"Невозможно увеличить изображения с помощью WebGPU, обработка будет медленнее"}};
+const ru = {alert:{comic_load_error:"Ошибка загрузки комикса",download_failed:"Ошибка загрузки",fetch_comic_img_failed:"Не удалось загрузить изображения",img_load_failed:"Не удалось загрузить изображение",no_img_download:"Нет доступных картинок для загрузки",repeat_load:"Загрузка изображения, пожалуйста подождите",retry_get_img_url:"Повторно получить адрес изображения на странице {{i}}",server_connect_failed:"Не удалось подключиться к серверу"},button:{auto_scroll:"Автопрокрутка",close_current_page_translation:"Скрыть перевод текущей страницы",download_completed:"Загрузка завершена",download_completed_error:"Загрузка завершена, но {{errorNum}} изображений не удалось загрузить",downloading:"Скачивание",fullscreen:"полноэкранный",fullscreen_exit:"выйти из полноэкранного режима",grid_mode:"Режим сетки",packaging:"Упаковка",page_fill:"Заполнить страницу",page_mode_double:"Двухчастичный режим",page_mode_single:"Одностраничный режим",scroll_mode:"Режим прокрутки",translate_current_page:"Перевести текущую страницу",zoom_in:"Приблизить",zoom_out:"Уменьшить"},description:"Добавляет расширенные функции для удобства на сайт, такие как двухстраничный режим и перевод.",eh_tag_lint:{combo:"[тег]: В большинстве случаев должен сосуществовать с [тегом]",conflict:"[tag]: Не должен сосуществовать с [tag]",correct_tag:"Должен быть правильный тег",miss_female:"Отсутствует мужской тег, возможно, понадобится",miss_parody:"Отсутствует тег пародии, возможно, понадобится",possible_conflict:"[tag]: В большинстве случаев не должен сосуществовать с [tag]",prerequisite:"[tag]: Предварительный тег [tag] не существует"},end_page:{next_button:"Следующая глава",prev_button:"Предыдущая глава",tip:{end_jump:"Последняя страница, следующая глава ниже",exit:"Последняя страница, ниже комикс будет закрыт",start_jump:"Первая страница, выше будет загружена предыдущая глава"}},hotkeys:{enter_read_mode:"Режим чтения",float_tag_list:"Плавающий список тегов",jump_next:"Перейти к следующей главе",jump_prev:"Перейти к предыдущей главе",jump_to_end:"Перейти к последней странице",jump_to_home:"Перейти к первой странице",page_down:"Перелистнуть страницу вниз",page_up:"Перелистнуть страницу вверх",repeat_tip:"Эта горячая клавиша была назначена на \\"{{hotkey}}\\"",scroll_down:"Прокрутить вниз",scroll_left:"Прокрутить влево",scroll_right:"Прокрутите вправо",scroll_up:"Прокрутите вверх",switch_auto_enlarge:"Автоматическое приближение",switch_dir:"Направление чтения",switch_grid_mode:"Режим сетки",switch_page_fill:"Заполнение страницы",switch_scroll_mode:"Режим прокрутки",switch_single_double_page_mode:"Одностраничный/Двухстраничный режим"},img_status:{error:"Ошибка загрузки",loading:"Загрузка",wait:"Ожидание загрузки"},other:{auto:"Авто",custom:"Custom",disable:"Отключить",distance:"расстояние",download:"Скачать",enabled:"Включено",enter_comic_read_mode:"Режим чтения комиксов",exit:"Выход",fab_hidden:"Скрыть плавающую кнопку",fab_show:"Показать плавающую кнопку",fill_page:"Заполнить страницу",hotkeys:"Горячие клавиши",img_loading:"Изображение загружается",interval:"интервал",loading_img:"Загрузка изображения",none:"Отсутствует",or:"или",other:"Другое",page_range:"Введите диапазон страниц.:\\n (например, 1, 3-5, 9-)",read_mode:"Режим чтения",setting:"Настройки"},pwa:{alert:{img_data_error:"Ошибка данных изображения",img_not_found:"Изображение не найдено",img_not_found_files:"Пожалуйста выберите файл или архив с изображениями",img_not_found_folder:"В папке не найдены изображения или архивы с изображениями",not_valid_url:"Невалидный URL",parse_error:"Ошибка анализа",password_error:"Неверный пароль",repeat_load:"Загрузка других файлов…",userscript_not_installed:"ComicRead не установлен"},button:{enter_url:"Ввести URL",install:"Установить",no_more_prompt:"Больше не показывать",resume_read:"Продолжить чтение",select_files:"Выбрать файл",select_folder:"Выбрать папку"},install_md:"### Устали открывать эту страницу каждый раз?\\nЕсли вы хотите:\\n1. Иметь отдельное окно, как если бы вы использовали обычное программное обеспечение\\n1. Открывать архивы напрямую\\n1. Пользоваться оффлайн\\n### Установите эту страницу в качестве [PWA](https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B5%D1%81%D1%81%D0%B8%D0%B2%D0%BD%D0%BE%D0%B5_%D0%B2%D0%B5%D0%B1-%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5) на свой компьютер 🐺☝️",message:{enter_password:"Пожалуйста введите пароль",parsing:"Разбор"},tip_enter_url:"Введите URL архива",tip_md:"# ComicRead PWA\\nИспользуйте [ComicRead](https://github.com/hymbz/ComicReadScript) для чтения комиксов **локально**.\\n---\\n### Перетащите изображения, папки или архивы чтобы начать читать\\n*Вы так же можете **открыть** или **вставить** URL архива на напрямую*"},setting:{hotkeys:{add:"Добавить горячие клавиши",restore:"Восстановить горячие клавиши по умолчанию"},language:"Язык",option:{abreast_duplicate:"Коэффициент дублирования столбцов",abreast_mode:"Режим прокрутки в ряд",adjust_to_width:"Адаптивная ширина",align_edge:"Выравнивание по краю при перелистывании страницы",always_load_all_img:"Всегда загружать все изображения",autoFullscreen:"Авто полный экран",autoHiddenMouse:"Автоматически скрывать курсор мыши",auto_scale:"Авто масштаб",auto_scroll_trigger_end:"Продолжить прокрутку на конечной странице",auto_switch_page_mode:"Автоматическое переключение режима одной/двойной страницы в зависимости от соотношения сторон",background_color:"Цвет фона",click_page_turn_area:"Область нажатия",click_page_turn_enabled:"Перелистывать по клику",click_page_turn_swap_area:"Поменять местами правую и левую области переключения страниц",dark_mode:"Тёмная тема",dark_mode_auto:"Тёмный режим следует за системой",dir_ltr:"Чтение слева направо (Американские комиксы)",dir_rtl:"Чтение справа налево (Японская манга)",disable_auto_enlarge:"Отключить автоматическое масштабирование изображений",first_page_fill:"Включить заполнение первой страницы по умолчанию",full_width:"Ширина окна просмотра",img_recognition:"распознавание изображений",img_recognition_background:"Определить цвет фона",img_recognition_pageFill:"Автоматическое переключение заполнения страницы",img_recognition_warn:"❗ Текущий браузер не поддерживает Web Workers. Включение этой функции может вызвать задержку страницы. Рекомендуется обновить или сменить браузер.",img_recognition_warn_2:"❗ Текущий веб-сайт не поддерживает Web Workers. Включение этой функции может привести к задержке страницы.",paragraph_appearance:"Внешность",paragraph_dir:"Направление чтения",paragraph_display:"Отображение",paragraph_scrollbar:"Полоса прокрутки",paragraph_translation:"Перевод",preload_page_num:"Предзагружать страниц",scroll_end:"После достижения конца",scroll_end_auto:"Сначала переход к предыдущей/следующей главе, иначе выход",scroll_mode_img_scale:"Коэффициент масштабирования изображения в режиме скроллинга",scroll_mode_img_spacing:"Расстояние между страницами в режиме скроллинга",scrollbar_auto_hidden:"Автоматически скрывать",scrollbar_easy_scroll:"Лёгкая прокрутка",scrollbar_position:"Позиция",scrollbar_position_bottom:"Снизу",scrollbar_position_hidden:"Спрятано",scrollbar_position_right:"Справа",scrollbar_position_top:"Сверху",scrollbar_show_img_status:"Показывать статус загрузки изображения",show_clickable_area:"Показывать кликабельные области",show_comments:"Показывать комментарии на последней странице",shrink_menu:"Включить область меню",swap_page_turn_key:"Поменять местами клавиши переключения страниц",zoom:"Коэффициент масштабирования изображения"},sync_options_other_site:"Синхронизировать настройки чтения с другими сайтами",translation:{cotrans_tip:"<p>Использует для перевода <a href=\\"https://cotrans.touhou.ai\\" target=\\"_blank\\">Cotrans API</a>, работающий исключительно за счёт своего создателя.</p>\\n<p>Запросы обрабатываются по одному в порядке синхронной очереди. Когда очередь превышает лимит новые запросы будут приводить к ошибке. Если такое случилось попробуйте позже.</p>\\n<p>Так что пожалуйста <b>учитывайте загруженность при выборе</b></p>\\n<p>Настоятельно рекомендовано использовать проект развёрнутый локально т.к. это не потребляет серверные ресурсы и вы не ограничены очередью.</p>",options:{box_threshold:"Порог коробки",detection_resolution:"Разрешение распознавания текста",direction:"Ориетнация текста",direction_auto:"Следование оригиналу",direction_horizontal:"Только горизонтально",direction_vertical:"Только вертикально",force_retry:"Принудительный повтор(Игнорировать кэш)",inpainter:"Инпейнтер",inpainting_size:"Инпейнтинг размер области",local_url:"Настроить URL сервера",mask_dilation_offset:"Маскировочное смещение дилатации",only_download_translated:"Скачать только переведённые изображения",target_language:"Целевой язык",text_detector:"Детектор текста",translator:"Переводчик",unclip_ratio:"Необрезанное соотношение"},range:"Объем перевода",server:"Сервер",server_selfhosted:"Свой",translate_all:"Перевести все изображения",translate_to_end:"Переводить страницу до конца"}},site:{add_feature:{add_hotkeys_actions:"Добавить операции с горячими клавишами",auto_adjust_option:"Автоматическая настройка параметра чтения",auto_page_turn:"Бесконечная прокрутка",auto_show:"Автоматически включать режим чтения",block_totally:"Глобально заблокировать комиксы",colorize_tag:"Цветные названия",cross_site_link:"Кросс-сайтовая ссылка",detect_ad:"Detect advertise page",expand_tag_list:"Развернуть список тегов",float_tag_list:"Плавающий список тегов",load_original_image:"Загружать оригинальное изображение",lock_option:"Блокировка опции сайта",open_link_new_page:"Открывать ссылки в новой вкладке",quick_favorite:"Быстрый фаворит",quick_rating:"Быстрый рейтинг",quick_tag_define:"Определение тега быстрого просмотра",remember_current_site:"Запомнить текущий сайт",tag_lint:"Тэг Линт"},changed_load_failed:"Страница изменилась, невозможно загрузить комикс",ehentai:{change_favorite_failed:"Не удалось изменить избранное",change_favorite_success:"Избранное успешно изменено",change_rating_failed:"Не удалось изменить оценку",change_rating_success:"Успешно изменен рейтинг",fetch_favorite_failed:"Не удалось получить информацию о избранном",fetch_img_page_source_failed:"Не удалось получить исходный код страницы с изображениями",fetch_img_page_url_failed:"Не удалось получить адрес страницы изображений из деталей",fetch_img_url_failed:"Не удалось получить адрес изображения",hitomi_error:"Ошибка сопоставления hitomi",html_changed_link_failed:"Структура страницы изменилась, и связанные функции внешнего сайта не работают должным образом",ip_banned:"IP адрес забанен",nhentai_error:"Ошибка сопоставления nhentai",nhentai_failed:"Ошибка сопостовления. Пожалуйста перезагрузите страницу после входа на {{nhentai}}"},nhentai:{fetch_next_page_failed:"Не удалось получить следующую страницу",tag_blacklist_fetch_failed:"Не удалось получить заблокированные теги"},show_settings_menu:"Показать меню настроек",simple:{auto_read_mode_message:"\\"Автоматически включать режим чтения\\" по умолчанию",no_img:"Не найдено подходящих изображений. Нажмите тут что бы выключить режим простого чтения.",simple_read_mode:"Включить простой режим чтения"}},touch_area:{menu:"Меню",type:{edge:"Грань",l:"L",left_right:"Лево Право",up_down:"Верх Низ"}},translation:{status:{colorizing:"Раскрашивание","default":"Неизвестный статус",detection:"Распознавание текста",downscaling:"Уменьшение масштаба",error:"Ошибка перевода","error-lang":"Целевой язык не поддерживается выбранным переводчиком","error-translating":"Ошибка перевода(пустой ответ)","error-with-id":"Ошибка во время перевода",finished:"Завершение",inpainting:"Наложение","mask-generation":"Генерация маски",ocr:"Распознавание текста",pending:"Ожидание","pending-pos":"Ожидание",preparing:"Ожидание окна бездействия",rendering:"Отрисовка",saved:"Сохранено","skip-no-regions":"На изображении не обнаружено текстовых областей.","skip-no-text":"Текст на изображении не обнаружен",textline_merge:"Обьединение текста",translating:"Переводится",upscaling:"Увеличение изображения"},tip:{check_img_status_failed:"Не удалось проверить статус изображения",download_img_failed:"Не удалось скачать изображение",get_translator_list_error:"Произошла ошибка во время получения списка доступных переводчиков",id_not_returned:"ID не вернули(",img_downloading:"Скачать",img_not_fully_loaded:"Изображение всё ещё загружается",pending:"Ожидение, позиция в очереди {{pos}}",resize_img_failed:"Не удалось изменить размер изображения",translating:"Изображение переводится",translation_completed:"Перевод завершён",upload:"Загрузка изображения",upload_error:"Ошибка отправки изображения",upload_return_error:"Ошибка перевода на сервере",wait_translation:"Ожидание перевода"},translator:{baidu:"baidu",deepl:"DeepL",google:"Google","gpt3.5":"GPT-3.5",none:"Убрать текст",offline:"Оффлайн переводчик",original:"Оригинал",youdao:"youdao"}},upscale:{module_download_complete:"Загрузка модели увеличения изображений завершена",module_download_failed:"Сбой загрузки модели увеличения изображений",module_downloading:"Загрузка модели увеличения изображений...",title:"Увеличение изображения",upscaled:"Увеличенный",upscaling:"Увеличивается",webgpu_tip:"Невозможно увеличить изображения с помощью WebGPU, обработка будет медленнее"}};
 
-const zh = {alert:{comic_load_error:"漫画加载出错",download_failed:"下载失败",fetch_comic_img_failed:"获取漫画图片失败",img_load_failed:"图片加载失败",no_img_download:"没有能下载的图片",repeat_load:"加载图片中，请稍候",retry_get_img_url:"重新获取第 {{i}} 页图片的地址",server_connect_failed:"无法连接到服务器"},button:{auto_scroll:"自动滚动",close_current_page_translation:"关闭当前页的翻译",download_completed:"下载完成",download_completed_error:"下载完成，但有 {{errorNum}} 张图片下载失败",downloading:"下载中",fullscreen:"全屏",fullscreen_exit:"退出全屏",grid_mode:"网格模式",packaging:"打包中",page_fill:"页面填充",page_mode_double:"双页模式",page_mode_single:"单页模式",scroll_mode:"卷轴模式",translate_current_page:"翻译当前页",zoom_in:"放大",zoom_out:"缩小"},description:"为漫画站增加双页阅读、翻译等优化体验的增强功能。",eh_tag_lint:{combo:"存在 [tag] 时，一般也存在 [tag]",conflict:"存在 [tag] 时，不应该存在 [tag]",correct_tag:"应该是正确的标签",miss_female:"缺少男性标签，可能需要",miss_parody:"缺少原作标签，可能需要",possible_conflict:"存在 [tag] 时，一般不应该存在 [tag]",prerequisite:"[tag] 的前置标签 [tag] 不存在"},end_page:{next_button:"下一话",prev_button:"上一话",tip:{end_jump:"已到结尾，继续向下翻页将跳至下一话",exit:"已到结尾，继续翻页将退出",start_jump:"已到开头，继续向上翻页将跳至上一话"}},hotkeys:{enter_read_mode:"进入阅读模式",float_tag_list:"悬浮标签列表",jump_to_end:"跳至尾页",jump_to_home:"跳至首页",page_down:"向下翻页",page_up:"向上翻页",repeat_tip:"此快捷键已被绑定至「{{hotkey}}」",scroll_down:"向下滚动",scroll_left:"向左滚动",scroll_right:"向右滚动",scroll_up:"向上滚动",switch_auto_enlarge:"切换图片自动放大选项",switch_dir:"切换阅读方向",switch_grid_mode:"切换网格模式",switch_page_fill:"切换页面填充",switch_scroll_mode:"切换卷轴模式",switch_single_double_page_mode:"切换单双页模式"},img_status:{error:"加载出错",loading:"正在加载",wait:"等待加载"},other:{auto:"自动",custom:"自定义",disable:"禁用",distance:"距离",download:"下载",enabled:"启用",enter_comic_read_mode:"进入漫画阅读模式",exit:"退出",fab_hidden:"隐藏悬浮按钮",fab_show:"显示悬浮按钮",fill_page:"填充页",hotkeys:"快捷键",img_loading:"图片加载中",interval:"间隔",loading_img:"加载图片中",none:"无",or:"或",other:"其他",page_range:"请输入页码范围：\\n（例如：1, 3-5, 9-)",read_mode:"阅读模式",setting:"设置"},pwa:{alert:{img_data_error:"图片数据错误",img_not_found:"找不到图片",img_not_found_files:"请选择图片文件或含有图片文件的压缩包",img_not_found_folder:"文件夹下没有图片文件或含有图片文件的压缩包",not_valid_url:"不是有效的 URL",parse_error:"解析出错",password_error:"密码错误",repeat_load:"正在加载其他文件中……",userscript_not_installed:"未安装 ComicRead 脚本"},button:{enter_url:"输入 URL",install:"安装",no_more_prompt:"不再提示",resume_read:"恢复阅读",select_files:"选择文件",select_folder:"选择文件夹"},install_md:"### 每次都要打开这个网页很麻烦？\\n如果你希望\\n1. 能有独立的窗口，像是在使用本地软件一样\\n1. 加入本地压缩文件的打开方式之中，方便直接打开\\n1. 离线使用~~（主要是担心国内网络抽风无法访问这个网页~~\\n### 欢迎将本页面作为 PWA 应用安装到电脑上😃👍",message:{enter_password:"请输入密码",parsing:"解析中"},tip_enter_url:"请输入压缩包 URL",tip_md:"# ComicRead PWA\\n使用 [ComicRead](https://github.com/hymbz/ComicReadScript) 的阅读模式阅读**本地**漫画\\n---\\n### 将图片文件、文件夹、压缩包直接拖入即可开始阅读\\n*也可以选择**直接粘贴**或**输入**压缩包 URL 下载阅读*"},setting:{hotkeys:{add:"添加新快捷键",restore:"恢复默认快捷键"},language:"语言",option:{abreast_duplicate:"每列重复比例",abreast_mode:"并排卷轴模式",adjust_to_width:"自适应宽度",align_edge:"滚动翻页时对齐边缘",always_load_all_img:"始终加载所有图片",autoFullscreen:"自动全屏",autoHiddenMouse:"自动隐藏鼠标",auto_scale:"自动缩放",auto_scroll_trigger_end:"在结束页上继续滚动",auto_switch_page_mode:"按屏幕比例切换单双页",background_color:"背景颜色",click_page_turn_area:"点击区域",click_page_turn_enabled:"点击翻页",click_page_turn_swap_area:"左右点击区域交换",dark_mode:"黑暗模式",dark_mode_auto:"黑暗模式跟随系统",dir_ltr:"从左到右（美漫）",dir_rtl:"从右到左（日漫）",disable_auto_enlarge:"禁止图片自动放大",first_page_fill:"默认启用首页填充",full_width:"视窗宽度",img_recognition:"图像识别",img_recognition_background:"识别背景色",img_recognition_pageFill:"自动调整页面填充",img_recognition_warn:"❗ 当前浏览器不支持 Web Worker，开启此功能可能导致页面卡顿，建议升级或更换浏览器。",img_recognition_warn_2:"❗ 当前网站不支持 Web Worker，开启此功能可能导致页面卡顿。",paragraph_appearance:"外观",paragraph_dir:"阅读方向",paragraph_display:"显示",paragraph_scrollbar:"滚动条",paragraph_translation:"翻译",preload_page_num:"预加载页数",scroll_end:"翻页至尽头后",scroll_end_auto:"优先跳至上/下一话，否则退出",scroll_mode_img_scale:"卷轴图片缩放",scroll_mode_img_spacing:"卷轴图片间距",scrollbar_auto_hidden:"自动隐藏",scrollbar_easy_scroll:"快捷滚动",scrollbar_position:"位置",scrollbar_position_bottom:"底部",scrollbar_position_hidden:"隐藏",scrollbar_position_right:"右侧",scrollbar_position_top:"顶部",scrollbar_show_img_status:"显示图片加载状态",show_clickable_area:"显示点击区域",show_comments:"在结束页显示评论",shrink_menu:"缩小菜单区域",swap_page_turn_key:"左右翻页键交换",zoom:"图片缩放"},sync_options_other_site:"同步阅读配置至其他站点",translation:{cotrans_tip:"<p>将使用 <a href=\\"https://cotrans.touhou.ai\\" target=\\"_blank\\">Cotrans</a> 提供的接口翻译图片，该服务器由其维护者用爱发电自费维护</p>\\n<p>多人同时使用时需要排队等待，等待队列达到上限后再上传新图片会报错，需要过段时间再试</p>\\n<p>所以还请 <b>注意用量</b></p>\\n<p>更推荐使用自己本地部署的项目，既不占用服务器资源也不需要排队</p>",options:{box_threshold:"文本框阈值",detection_resolution:"文本扫描清晰度",direction:"渲染字体方向",direction_auto:"原文一致",direction_horizontal:"仅限水平",direction_vertical:"仅限垂直",force_retry:"忽略缓存强制重试",inpainter:"图像修复器",inpainting_size:"图像修复尺寸",local_url:"自定义服务器 URL",mask_dilation_offset:"掩码膨胀偏移量",only_download_translated:"只下载翻译完的图片",target_language:"目标语言",text_detector:"文本扫描器",translator:"翻译服务",unclip_ratio:"文本框膨胀比率"},range:"翻译范围",server:"翻译服务器",server_selfhosted:"本地部署",translate_all:"翻译全部图片",translate_to_end:"翻译当前页至结尾"}},site:{add_feature:{add_hotkeys_actions:"增加快捷键操作",auto_adjust_option:"自动调整阅读配置",auto_page_turn:"无限滚动",auto_show:"自动进入阅读模式",block_totally:"彻底屏蔽漫画",colorize_tag:"标签染色",cross_site_link:"关联外站",detect_ad:"识别广告页",expand_tag_list:"展开标签列表",float_tag_list:"悬浮标签列表",load_original_image:"加载原图",lock_option:"锁定站点配置",open_link_new_page:"在新页面中打开链接",quick_favorite:"快捷收藏",quick_rating:"快捷评分",quick_tag_define:"快捷查看标签定义",remember_current_site:"记住当前站点",tag_lint:"标签检查"},changed_load_failed:"网站发生变化，无法加载漫画",ehentai:{change_favorite_failed:"收藏夹修改失败",change_favorite_success:"收藏夹修改成功",change_rating_failed:"评分修改失败",change_rating_success:"评分修改成功",fetch_favorite_failed:"获取收藏夹信息失败",fetch_img_page_source_failed:"获取图片页源码失败",fetch_img_page_url_failed:"从详情页获取图片页地址失败",fetch_img_url_failed:"从图片页获取图片地址失败",hitomi_error:"hitomi 匹配出错",html_changed_link_failed:"页面结构发生改变，关联外站功能无法正常生效",ip_banned:"IP地址被禁",nhentai_error:"nhentai 匹配出错",nhentai_failed:"匹配失败，请在确认登录 {{nhentai}} 后刷新"},nhentai:{fetch_next_page_failed:"获取下一页漫画数据失败",tag_blacklist_fetch_failed:"标签黑名单获取失败"},show_settings_menu:"显示设置菜单",simple:{auto_read_mode_message:"已默认开启「自动进入阅读模式」",no_img:"未找到合适的漫画图片，\\n如有需要可点此关闭简易阅读模式",simple_read_mode:"使用简易阅读模式"}},touch_area:{menu:"菜单",type:{edge:"边缘",l:"L",left_right:"左右",up_down:"上下"}},translation:{status:{colorizing:"正在上色","default":"未知状态",detection:"正在检测文本",downscaling:"正在缩小图片",error:"翻译出错","error-lang":"你选择的翻译服务不支持你选择的语言","error-translating":"翻译服务没有返回任何文本","error-with-id":"翻译出错",finished:"正在整理结果",inpainting:"正在修补图片","mask-generation":"正在生成文本掩码",ocr:"正在识别文本",pending:"正在等待","pending-pos":"正在等待",preparing:"等待空闲窗口",rendering:"正在渲染",saved:"保存结果","skip-no-regions":"图片中没有检测到文本区域","skip-no-text":"图片中没有检测到文本",textline_merge:"正在整合文本",translating:"正在翻译文本",upscaling:"正在放大图片"},tip:{check_img_status_failed:"检查图片状态失败",download_img_failed:"下载图片失败",get_translator_list_error:"获取可用翻译服务列表时出错",id_not_returned:"未返回 id",img_downloading:"下载图片中",img_not_fully_loaded:"图片未加载完毕",pending:"正在等待，列队还有 {{pos}} 张图片",resize_img_failed:"缩放图片失败",translating:"翻译图片中",translation_completed:"翻译完成",upload:"上传图片中",upload_error:"上传图片出错",upload_return_error:"服务器翻译出错",wait_translation:"等待翻译"},translator:{baidu:"百度",deepl:"DeepL",google:"谷歌","gpt3.5":"GPT-3.5",none:"删除文本",offline:"离线模型",original:"原文",youdao:"有道"}},upscale:{module_download_complete:"图片放大模型下载完成",module_download_failed:"图片放大模型下载失败",module_downloading:"图片放大模型下载中...",title:"无损放大图片",upscaled:"已放大",upscaling:"放大中",webgpu_tip:"无法使用 WebGPU 放大图片，处理速度将变慢"}};
+const zh = {alert:{comic_load_error:"漫画加载出错",download_failed:"下载失败",fetch_comic_img_failed:"获取漫画图片失败",img_load_failed:"图片加载失败",no_img_download:"没有能下载的图片",repeat_load:"加载图片中，请稍候",retry_get_img_url:"重新获取第 {{i}} 页图片的地址",server_connect_failed:"无法连接到服务器"},button:{auto_scroll:"自动滚动",close_current_page_translation:"关闭当前页的翻译",download_completed:"下载完成",download_completed_error:"下载完成，但有 {{errorNum}} 张图片下载失败",downloading:"下载中",fullscreen:"全屏",fullscreen_exit:"退出全屏",grid_mode:"网格模式",packaging:"打包中",page_fill:"页面填充",page_mode_double:"双页模式",page_mode_single:"单页模式",scroll_mode:"卷轴模式",translate_current_page:"翻译当前页",zoom_in:"放大",zoom_out:"缩小"},description:"为漫画站增加双页阅读、翻译等优化体验的增强功能。",eh_tag_lint:{combo:"存在 [tag] 时，一般也存在 [tag]",conflict:"存在 [tag] 时，不应该存在 [tag]",correct_tag:"应该是正确的标签",miss_female:"缺少男性标签，可能需要",miss_parody:"缺少原作标签，可能需要",possible_conflict:"存在 [tag] 时，一般不应该存在 [tag]",prerequisite:"[tag] 的前置标签 [tag] 不存在"},end_page:{next_button:"下一话",prev_button:"上一话",tip:{end_jump:"已到结尾，继续向下翻页将跳至下一话",exit:"已到结尾，继续翻页将退出",start_jump:"已到开头，继续向上翻页将跳至上一话"}},hotkeys:{enter_read_mode:"进入阅读模式",float_tag_list:"悬浮标签列表",jump_next:"跳至下一话",jump_prev:"跳至上一话",jump_to_end:"跳至尾页",jump_to_home:"跳至首页",page_down:"向下翻页",page_up:"向上翻页",repeat_tip:"此快捷键已被绑定至「{{hotkey}}」",scroll_down:"向下滚动",scroll_left:"向左滚动",scroll_right:"向右滚动",scroll_up:"向上滚动",switch_auto_enlarge:"切换图片自动放大选项",switch_dir:"切换阅读方向",switch_grid_mode:"切换网格模式",switch_page_fill:"切换页面填充",switch_scroll_mode:"切换卷轴模式",switch_single_double_page_mode:"切换单双页模式"},img_status:{error:"加载出错",loading:"正在加载",wait:"等待加载"},other:{auto:"自动",custom:"自定义",disable:"禁用",distance:"距离",download:"下载",enabled:"启用",enter_comic_read_mode:"进入漫画阅读模式",exit:"退出",fab_hidden:"隐藏悬浮按钮",fab_show:"显示悬浮按钮",fill_page:"填充页",hotkeys:"快捷键",img_loading:"图片加载中",interval:"间隔",loading_img:"加载图片中",none:"无",or:"或",other:"其他",page_range:"请输入页码范围：\\n（例如：1, 3-5, 9-)",read_mode:"阅读模式",setting:"设置"},pwa:{alert:{img_data_error:"图片数据错误",img_not_found:"找不到图片",img_not_found_files:"请选择图片文件或含有图片文件的压缩包",img_not_found_folder:"文件夹下没有图片文件或含有图片文件的压缩包",not_valid_url:"不是有效的 URL",parse_error:"解析出错",password_error:"密码错误",repeat_load:"正在加载其他文件中……",userscript_not_installed:"未安装 ComicRead 脚本"},button:{enter_url:"输入 URL",install:"安装",no_more_prompt:"不再提示",resume_read:"恢复阅读",select_files:"选择文件",select_folder:"选择文件夹"},install_md:"### 每次都要打开这个网页很麻烦？\\n如果你希望\\n1. 能有独立的窗口，像是在使用本地软件一样\\n1. 加入本地压缩文件的打开方式之中，方便直接打开\\n1. 离线使用~~（主要是担心国内网络抽风无法访问这个网页~~\\n### 欢迎将本页面作为 PWA 应用安装到电脑上😃👍",message:{enter_password:"请输入密码",parsing:"解析中"},tip_enter_url:"请输入压缩包 URL",tip_md:"# ComicRead PWA\\n使用 [ComicRead](https://github.com/hymbz/ComicReadScript) 的阅读模式阅读**本地**漫画\\n---\\n### 将图片文件、文件夹、压缩包直接拖入即可开始阅读\\n*也可以选择**直接粘贴**或**输入**压缩包 URL 下载阅读*"},setting:{hotkeys:{add:"添加新快捷键",restore:"恢复默认快捷键"},language:"语言",option:{abreast_duplicate:"每列重复比例",abreast_mode:"并排卷轴模式",adjust_to_width:"自适应宽度",align_edge:"滚动翻页时对齐边缘",always_load_all_img:"始终加载所有图片",autoFullscreen:"自动全屏",autoHiddenMouse:"自动隐藏鼠标",auto_scale:"自动缩放",auto_scroll_trigger_end:"在结束页上继续滚动",auto_switch_page_mode:"按屏幕比例切换单双页",background_color:"背景颜色",click_page_turn_area:"点击区域",click_page_turn_enabled:"点击翻页",click_page_turn_swap_area:"左右点击区域交换",dark_mode:"黑暗模式",dark_mode_auto:"黑暗模式跟随系统",dir_ltr:"从左到右（美漫）",dir_rtl:"从右到左（日漫）",disable_auto_enlarge:"禁止图片自动放大",first_page_fill:"默认启用首页填充",full_width:"视窗宽度",img_recognition:"图像识别",img_recognition_background:"识别背景色",img_recognition_pageFill:"自动调整页面填充",img_recognition_warn:"❗ 当前浏览器不支持 Web Worker，开启此功能可能导致页面卡顿，建议升级或更换浏览器。",img_recognition_warn_2:"❗ 当前网站不支持 Web Worker，开启此功能可能导致页面卡顿。",paragraph_appearance:"外观",paragraph_dir:"阅读方向",paragraph_display:"显示",paragraph_scrollbar:"滚动条",paragraph_translation:"翻译",preload_page_num:"预加载页数",scroll_end:"翻页至尽头后",scroll_end_auto:"优先跳至上/下一话，否则退出",scroll_mode_img_scale:"卷轴图片缩放",scroll_mode_img_spacing:"卷轴图片间距",scrollbar_auto_hidden:"自动隐藏",scrollbar_easy_scroll:"快捷滚动",scrollbar_position:"位置",scrollbar_position_bottom:"底部",scrollbar_position_hidden:"隐藏",scrollbar_position_right:"右侧",scrollbar_position_top:"顶部",scrollbar_show_img_status:"显示图片加载状态",show_clickable_area:"显示点击区域",show_comments:"在结束页显示评论",shrink_menu:"缩小菜单区域",swap_page_turn_key:"左右翻页键交换",zoom:"图片缩放"},sync_options_other_site:"同步阅读配置至其他站点",translation:{cotrans_tip:"<p>将使用 <a href=\\"https://cotrans.touhou.ai\\" target=\\"_blank\\">Cotrans</a> 提供的接口翻译图片，该服务器由其维护者用爱发电自费维护</p>\\n<p>多人同时使用时需要排队等待，等待队列达到上限后再上传新图片会报错，需要过段时间再试</p>\\n<p>所以还请 <b>注意用量</b></p>\\n<p>更推荐使用自己本地部署的项目，既不占用服务器资源也不需要排队</p>",options:{box_threshold:"文本框阈值",detection_resolution:"文本扫描清晰度",direction:"渲染字体方向",direction_auto:"原文一致",direction_horizontal:"仅限水平",direction_vertical:"仅限垂直",force_retry:"忽略缓存强制重试",inpainter:"图像修复器",inpainting_size:"图像修复尺寸",local_url:"自定义服务器 URL",mask_dilation_offset:"掩码膨胀偏移量",only_download_translated:"只下载翻译完的图片",target_language:"目标语言",text_detector:"文本扫描器",translator:"翻译服务",unclip_ratio:"文本框膨胀比率"},range:"翻译范围",server:"翻译服务器",server_selfhosted:"本地部署",translate_all:"翻译全部图片",translate_to_end:"翻译当前页至结尾"}},site:{add_feature:{add_hotkeys_actions:"增加快捷键操作",auto_adjust_option:"自动调整阅读配置",auto_page_turn:"无限滚动",auto_show:"自动进入阅读模式",block_totally:"彻底屏蔽漫画",colorize_tag:"标签染色",cross_site_link:"关联外站",detect_ad:"识别广告页",expand_tag_list:"展开标签列表",float_tag_list:"悬浮标签列表",load_original_image:"加载原图",lock_option:"锁定站点配置",open_link_new_page:"在新页面中打开链接",quick_favorite:"快捷收藏",quick_rating:"快捷评分",quick_tag_define:"快捷查看标签定义",remember_current_site:"记住当前站点",tag_lint:"标签检查"},changed_load_failed:"网站发生变化，无法加载漫画",ehentai:{change_favorite_failed:"收藏夹修改失败",change_favorite_success:"收藏夹修改成功",change_rating_failed:"评分修改失败",change_rating_success:"评分修改成功",fetch_favorite_failed:"获取收藏夹信息失败",fetch_img_page_source_failed:"获取图片页源码失败",fetch_img_page_url_failed:"从详情页获取图片页地址失败",fetch_img_url_failed:"从图片页获取图片地址失败",hitomi_error:"hitomi 匹配出错",html_changed_link_failed:"页面结构发生改变，关联外站功能无法正常生效",ip_banned:"IP地址被禁",nhentai_error:"nhentai 匹配出错",nhentai_failed:"匹配失败，请在确认登录 {{nhentai}} 后刷新"},nhentai:{fetch_next_page_failed:"获取下一页漫画数据失败",tag_blacklist_fetch_failed:"标签黑名单获取失败"},show_settings_menu:"显示设置菜单",simple:{auto_read_mode_message:"已默认开启「自动进入阅读模式」",no_img:"未找到合适的漫画图片，\\n如有需要可点此关闭简易阅读模式",simple_read_mode:"使用简易阅读模式"}},touch_area:{menu:"菜单",type:{edge:"边缘",l:"L",left_right:"左右",up_down:"上下"}},translation:{status:{colorizing:"正在上色","default":"未知状态",detection:"正在检测文本",downscaling:"正在缩小图片",error:"翻译出错","error-lang":"你选择的翻译服务不支持你选择的语言","error-translating":"翻译服务没有返回任何文本","error-with-id":"翻译出错",finished:"正在整理结果",inpainting:"正在修补图片","mask-generation":"正在生成文本掩码",ocr:"正在识别文本",pending:"正在等待","pending-pos":"正在等待",preparing:"等待空闲窗口",rendering:"正在渲染",saved:"保存结果","skip-no-regions":"图片中没有检测到文本区域","skip-no-text":"图片中没有检测到文本",textline_merge:"正在整合文本",translating:"正在翻译文本",upscaling:"正在放大图片"},tip:{check_img_status_failed:"检查图片状态失败",download_img_failed:"下载图片失败",get_translator_list_error:"获取可用翻译服务列表时出错",id_not_returned:"未返回 id",img_downloading:"下载图片中",img_not_fully_loaded:"图片未加载完毕",pending:"正在等待，列队还有 {{pos}} 张图片",resize_img_failed:"缩放图片失败",translating:"翻译图片中",translation_completed:"翻译完成",upload:"上传图片中",upload_error:"上传图片出错",upload_return_error:"服务器翻译出错",wait_translation:"等待翻译"},translator:{baidu:"百度",deepl:"DeepL",google:"谷歌","gpt3.5":"GPT-3.5",none:"删除文本",offline:"离线模型",original:"原文",youdao:"有道"}},upscale:{module_download_complete:"图片放大模型下载完成",module_download_failed:"图片放大模型下载失败",module_downloading:"图片放大模型下载中...",title:"无损放大图片",upscaled:"已放大",upscaling:"放大中",webgpu_tip:"无法使用 WebGPU 放大图片，处理速度将变慢"}};
 
 /**
  * Creates a callback that is debounced and cancellable. The debounced callback is called on **trailing** edge.
@@ -1891,7 +1889,9 @@ const [defaultHotkeys, setDefaultHotkeys] = solidJs.createSignal({
   translate_all: [],
   translate_to_end: [],
   fullscreen: [],
-  auto_scroll: []
+  auto_scroll: [],
+  jump_next: [],
+  jump_prev: []
 });
 
 /** 快捷键配置 */
@@ -4413,6 +4413,10 @@ const handleHotkey = (hotkey, e) => {
       return switchAutoScroll();
     case 'fullscreen':
       return switchFullscreen();
+    case 'jump_next':
+      return store.prop.onNext?.();
+    case 'jump_prev':
+      return store.prop.onPrev?.();
     case 'switch_auto_enlarge':
       return setOption(draftOption => {
         draftOption.disableZoom = !draftOption.disableZoom;
@@ -4893,10 +4897,9 @@ const EmptyTip = () => {
     };
   });
   return (() => {
-    var _el$ = web.template(\`<h1>\`)();
+    var _el$ = web.template(\`<h1 style=opacity:0>\`)();
     var _ref$ = ref;
     typeof _ref$ === "function" ? web.use(_ref$, _el$) : ref = _el$;
-    web.setStyleProperty(_el$, "opacity", "0");
     _el$.textContent = "NULL";
     return _el$;
   })();
@@ -5965,14 +5968,13 @@ const OtherHotkeys = props => {
     ref.value = '';
   };
   return (() => {
-    var _el$8 = web.template(\`<div><select><option value disabled hidden selected> …\`)(),
+    var _el$8 = web.template(\`<div><select style=height:100%><option value disabled hidden selected> …\`)(),
       _el$9 = _el$8.firstChild,
       _el$0 = _el$9.firstChild,
       _el$1 = _el$0.firstChild;
     _el$9.addEventListener("change", handleChange);
     var _ref$ = ref;
     typeof _ref$ === "function" ? web.use(_ref$, _el$9) : ref = _el$9;
-    web.setStyleProperty(_el$9, "height", "100%");
     web.insert(_el$0, () => helper.t('other.other'), _el$1);
     web.insert(_el$9, web.createComponent(solidJs.For, {
       get each() {
@@ -6037,6 +6039,7 @@ const SettingsItem = props => (() => {
   web.effect(_p$ => {
     var _v$ = props.class ? \`\${modules_c21c94f2$1.SettingsItem} \${props.class}\` : modules_c21c94f2$1.SettingsItem,
       _v$2 = {
+        // oxlint-disable-next-line explicit-length-check
         [props.class ?? '']: Boolean(props.class?.length),
         ...props.classList
       },
@@ -6371,11 +6374,7 @@ const SettingTranslation = () => [web.createComponent(SettingsItemSelect, web.me
         return isTranslatingToEnd();
       },
       onChange: translateToEnd
-    }), web.createComponent(TranslateRange, {}), (() => {
-      var _el$2 = web.template(\`<hr>\`)();
-      web.setStyleProperty(_el$2, "margin", "1em 0");
-      return _el$2;
-    })()];
+    }), web.createComponent(TranslateRange, {}), web.template(\`<hr style="margin:1em 0">\`)()];
   }
 }), web.createComponent(solidJs.Show, {
   get when() {
@@ -6450,11 +6449,7 @@ const SettingTranslation = () => [web.createComponent(SettingsItemSelect, web.me
     return store.option.translation.server !== 'disable';
   },
   get children() {
-    return [(() => {
-      var _el$3 = web.template(\`<hr>\`)();
-      web.setStyleProperty(_el$3, "margin", "1em 0");
-      return _el$3;
-    })(), web.createComponent(SettingsItemSwitch, web.mergeProps({
+    return [web.template(\`<hr style="margin:1em 0">\`)(), web.createComponent(SettingsItemSwitch, web.mergeProps({
       get name() {
         return helper.t('setting.translation.options.force_retry');
       }
@@ -6688,7 +6683,7 @@ const defaultSettingList = () => [[helper.t('setting.option.paragraph_dir'), () 
     return helper.t('setting.option.background_color');
   },
   get children() {
-    var _el$ = web.template(\`<input type=color style=margin-right:.4em>\`)();
+    var _el$ = web.template(\`<input type=color style=width:2em;margin-right:.4em>\`)();
     web.addEventListener(_el$, "input", helper.throttle(e => {
       if (!e.target.value) return;
       setOption(draftOption => {
@@ -6697,7 +6692,6 @@ const defaultSettingList = () => [[helper.t('setting.option.paragraph_dir'), () 
         if (draftOption.customBackground) draftOption.darkMode = helper.needDarkMode(draftOption.customBackground);
       });
     }, 20));
-    web.setStyleProperty(_el$, "width", "2em");
     web.effect(() => _el$.value = store.option.customBackground ?? (store.option.darkMode ? '#000000' : '#ffffff'));
     return _el$;
   }
@@ -8209,176 +8203,6 @@ exports.Toaster = Toaster;
 exports.toast = toast;
 `
 break;
-case 'userscript/dmzjApi':
-code =`
-const solidJs = require('solid-js');
-const store = require('solid-js/store');
-const dmzjDecrypt = require('dmzjDecrypt');
-const helper = require('helper');
-const main = require('main');
-
-/** 根据漫画 id 和章节 id 获取章节数据 */
-const getChapterInfo = async (comicId, chapterId) => {
-  const res = await main.request(\`https://m.dmzj.com/chapinfo/\${comicId}/\${chapterId}.html\`, {
-    responseType: 'json',
-    errorText: '获取章节数据失败'
-  });
-  return res.response;
-};
-
-/** 根据漫画 id 和章节 id 获取章节评论 */
-const getViewpoint = async (comicId, chapterId) => {
-  try {
-    const res = await main.request(\`http://v3api.dmzj.com/viewPoint/0/\${comicId}/\${chapterId}.json\`, {
-      responseType: 'json',
-      errorText: '获取章节评论失败'
-    });
-
-    // 还有另一个 api
-    // https://manhua.dmzj.com/tpi/api/viewpoint/getViewpoint?type=0&type_id=\${comicId}&chapter_id=\${chapterId}&more=1
-
-    return res.response.map(({
-      content,
-      num
-    }) => \`\${content} [+\${num}]\`);
-  } catch {
-    return [];
-  }
-};
-const getComicDetail_base = async comicId => {
-  const res = await main.request(\`https://api.dmzj.com/dynamic/comicinfo/\${comicId}.json\`, {
-    responseType: 'json'
-  });
-  const {
-    info: {
-      last_updatetime,
-      title
-    },
-    list
-  } = res.response.data;
-  return {
-    title,
-    last_updatetime,
-    last_update_chapter_id: undefined,
-    chapters: [{
-      name: '连载',
-      list: list.map(({
-        id,
-        chapter_name,
-        updatetime
-      }) => ({
-        id,
-        title: chapter_name,
-        updatetime
-      }))
-    }]
-  };
-};
-const getComicDetail_v4Api = async comicId => {
-  const res = await main.request(\`https://v4api.idmzj.com/comic/detail/\${comicId}?uid=2665531&disable_level=1\`);
-  const {
-    comicInfo: {
-      last_update_chapter_id,
-      last_updatetime,
-      chapters,
-      title
-    }
-  } = dmzjDecrypt(res.responseText);
-  for (const chapter of Object.values(chapters)) chapter.data.sort((a, b) => a.chapter_order - b.chapter_order);
-  return {
-    title,
-    last_updatetime,
-    last_update_chapter_id,
-    chapters: chapters.map(({
-      data,
-      title: name
-    }) => ({
-      name,
-      list: data.map(({
-        chapter_id,
-        chapter_title,
-        updatetime
-      }) => ({
-        id: chapter_id,
-        title: chapter_title,
-        updatetime
-      }))
-    }))
-  };
-};
-const getComicDetail_traversal = async (comicId, draftData) => {
-  let nextId = draftData.last_update_chapter_id;
-  if (!nextId) {
-    helper.log.warn('last_update_chapter_id 为空，无法通过遍历获取章节');
-    return;
-  }
-  draftData.chapters[0] = {
-    name: '连载',
-    list: []
-  };
-  main.toast.warn('正在通过遍历获取所有章节，耗时可能较长', {
-    id: 'traversalTip',
-    duration: Number.POSITIVE_INFINITY
-  });
-  while (nextId) {
-    try {
-      const {
-        chapter_name,
-        updatetime,
-        prev_chap_id
-      } = await getChapterInfo(comicId, nextId);
-      draftData.chapters[0].list.push({
-        id: nextId,
-        title: chapter_name,
-        updatetime
-      });
-      nextId = prev_chap_id;
-    } catch {
-      nextId = undefined;
-    }
-  }
-  main.toast.dismiss('traversalTip');
-};
-
-/** 返回可变 store 类型的漫画数据 */
-const useComicDetail = comicId => {
-  const data = store.createMutable({});
-  const apiFn = [getComicDetail_v4Api, getComicDetail_base, getComicDetail_traversal];
-  solidJs.onMount(async () => {
-    for (const api of apiFn) {
-      try {
-        Object.assign(data, await api(comicId, data));
-        if (data.chapters?.some(chapter => chapter.list.length)) return;
-      } catch {}
-    }
-    main.toast.error('漫画数据获取失败', {
-      duration: Number.POSITIVE_INFINITY
-    });
-  });
-  return data;
-};
-
-/** 根据漫画拼音简称找到对应的 id */
-const getComicId = async py => {
-  const res = await main.request(\`https://manhua.dmzj.com/api/v1/comic2/comic/detail?\${new URLSearchParams({
-    channel: 'pc',
-    app_name: 'comic',
-    version: '1.0.0',
-    timestamp: \`\${Date.now()}\`,
-    uid: '',
-    comic_py: py
-  }).toString()}\`, {
-    responseType: 'json'
-  });
-  return res.response.data?.comicInfo?.id;
-};
-
-exports.getChapterInfo = getChapterInfo;
-exports.getComicId = getComicId;
-exports.getViewpoint = getViewpoint;
-exports.useComicDetail = useComicDetail;
-`
-break;
 case 'userscript/copyApi':
 code =`
 const helper = require('helper');
@@ -8953,7 +8777,7 @@ const handleVersionUpdate = async () => {
       var _el$ = web.template(\`<h2>🥳 ComicRead 已更新到 v\`)();
       web.insert(_el$, () => GM.info.script.version, null);
       return _el$;
-    })(), web.template(\`<h3>新增\`)(), web.template(\`<ul><li>支持 IMHentai\`)(), web.template(\`<h3>修复\`)(), web.template(\`<ul><li><p>修复 komiic 上/下话切换失效的 bug </p></li><li><p>修复开启了图像无损放大后只能下载到原图的 bug\`)(), web.createComponent(solidJs.Show, {
+    })(), web.template(\`<h3>新增\`)(), web.template(\`<ul><li><p>增加「跳至上/下一话」快捷键 6d18613</p></li><li><p>支持 hanime1 a8f269e, closes #300</p></li><li><p>支持 hdoujin 0528c2d, closes #301</p></li><li><p>支持 hentaienvy 和 hentaiera abc26b4\`)(), web.createComponent(solidJs.Show, {
       get when() {
         return versionLt(version, '12');
       },
@@ -10956,6 +10780,33 @@ const main = require('main');
 const copyApi = require('userscript/copyApi');
 const otherSite = require('userscript/otherSite');
 
+// 只要带上 cf_clearance cookie 就能通过 Cloudflare 验证，但其是 httpOnly
+// 目前暴力猴还不支持 GM_Cookie，篡改猴也需要去设置里手动设置才能支持 httpOnly
+// 所以暂不处理，就嗯等
+const getNhentaiData = async id => {
+  const {
+    response
+  } = await main.request(`https://nhentai.net/api/gallery/${id}`, {
+    responseType: 'json',
+    errorText: helper.t('site.ehentai.nhentai_error'),
+    noTip: true,
+    headers: {
+      'User-Agent': navigator.userAgent
+    },
+    fetch: false
+  });
+  return response;
+};
+const toImgList = data => {
+  const {
+    media_id,
+    images
+  } = data;
+  return images.pages.map(({
+    t
+  }, i) => `https://i.nhentai.net/galleries/${media_id}/${i + 1}.${helper.fileType[t]}`);
+};
+
 /** 站点配置 */
 let options;
 try {
@@ -11253,12 +11104,11 @@ const main = require('main');
             }
           })];
           const mobile = () => (() => {
-            var _el$7 = web.template(`<li><a>回第<!>页`)(),
+            var _el$7 = web.template(`<li><a style=color:unset>回第<!>页`)(),
               _el$8 = _el$7.firstChild,
               _el$9 = _el$8.firstChild,
               _el$1 = _el$9.nextSibling;
             web.addEventListener(_el$8, "click", unsafeWindow.atarget, true);
-            web.setStyleProperty(_el$8, "color", "unset");
             web.insert(_el$8, () => data()?.lastPageNum, _el$1);
             web.effect(() => web.setAttribute(_el$8, "href", url()));
             return _el$7;
@@ -11344,324 +11194,6 @@ web.delegateEvents(["click"]);
           onPrev: helper.querySelectorClick('#btnPrev'),
           onExit: isEnd => isEnd && helper.scrollIntoView('#w1')
         };
-        break;
-      }
-
-    // #动漫之家（解锁隐藏漫画）
-    // TODO: 动漫之家是似了吗？怎么所有网页都没法正常使用
-    // test: todo
-    case 'comic.idmzj.com':
-    case 'comic.dmzj.com':
-    case 'manhua.idmzj.com':
-    case 'manhua.dmzj.com':
-      {
-const web = require('solid-js/web');
-const solidJs = require('solid-js');
-const helper = require('helper');
-const main = require('main');
-const dmzjApi = require('userscript/dmzjApi');
-
-(async () => {
-  const getId = async () => {
-    const [, comicPy, chapterId] = location.pathname.split(/\/|\./);
-    if (!comicPy) {
-      main.toast.error('漫画数据获取失败', {
-        duration: Number.POSITIVE_INFINITY,
-        throw: new Error('获取漫画拼音简称失败')
-      });
-    }
-    const comicId = await dmzjApi.getComicId(comicPy);
-    return {
-      comicId,
-      chapterId
-    };
-  };
-  const handleListPage = async () => {
-    await helper.waitDom('.commentBox');
-
-    // 判断漫画被禁
-    // 测试例子：https://manhua.dmzj.com/yanquan/
-    if (!helper.querySelector('.cartoon_online_border > img')) return false;
-    helper.querySelector('.cartoon_online_border').innerHTML = '获取漫画数据中';
-
-    // 删掉原有的章节 dom
-    for (const e of helper.querySelectorAll('.odd_anim_title ~ *')) e.remove();
-    const {
-      comicId
-    } = await getId();
-    web.render(() => {
-      const comicDetail = dmzjApi.useComicDetail(comicId);
-      return web.createComponent(solidJs.For, {
-        get each() {
-          return comicDetail.chapters;
-        },
-        children: ({
-          name,
-          list
-        }) => [(() => {
-          var _el$ = web.template(`<div class=photo_part><div class=h2_title2><span class="h2_icon h2_icon22"></span><h2> `)(),
-            _el$2 = _el$.firstChild,
-            _el$3 = _el$2.firstChild,
-            _el$4 = _el$3.nextSibling,
-            _el$5 = _el$4.firstChild;
-          web.insert(_el$4, () => comicDetail.title, _el$5);
-          web.insert(_el$4, name === '连载' ? '在线漫画全集' : `漫画其它版本：${name}`, null);
-          return _el$;
-        })(), (() => {
-          var _el$6 = web.template(`<div class=cartoon_online_border_other style=margin-top:-8px><ul></ul><div class=clearfix>`)(),
-            _el$7 = _el$6.firstChild;
-          web.insert(_el$7, web.createComponent(solidJs.For, {
-            each: list,
-            children: ({
-              title,
-              id,
-              updatetime
-            }) => (() => {
-              var _el$8 = web.template(`<li><a target=_blank>`)(),
-                _el$9 = _el$8.firstChild;
-              web.setAttribute(_el$9, "title", title);
-              web.setAttribute(_el$9, "href", `https://m.dmzj.com/view/${comicId}/${id}.html`);
-              web.insert(_el$9, title);
-              web.effect(() => _el$9.classList.toggle("color_red", !!(updatetime === comicDetail.last_updatetime)));
-              return _el$8;
-            })()
-          }));
-          return _el$6;
-        })()]
-      });
-    }, helper.querySelector('.middleright_mr'));
-    return false;
-  };
-
-  /** 切换至上下滚动阅读 */
-  const waitSwitchScroll = async () => {
-    await helper.waitDom('#qiehuan_txt');
-    await helper.wait(() => {
-      const dom = helper.querySelector('#qiehuan_txt');
-      if (!dom) return;
-      if (dom.textContent !== '切换到上下滚动阅读') return true;
-      dom.click();
-    });
-  };
-  const getImgList = async () => {
-    await waitSwitchScroll();
-    await helper.waitDom('.comic_wraCon img');
-    return helper.querySelectorAll('.comic_wraCon img').map(e => e.src);
-  };
-  const checkButton = selector => {
-    const dom = helper.querySelector(selector);
-    if (dom?.textContent) return () => dom.click();
-  };
-  const isMangaPage = () => {
-    if (/^\/[^/]*\/?$/.test(location.pathname)) return handleListPage();
-    return /^\/.*?\/\d+\.shtml$/.test(location.pathname);
-  };
-  await main.universal({
-    name: 'dmzj',
-    getImgList,
-    onExit: isEnd => isEnd && helper.scrollIntoView('#hd'),
-    async getCommentList() {
-      const {
-        comicId,
-        chapterId
-      } = await getId();
-      return dmzjApi.getViewpoint(comicId, chapterId);
-    },
-    SPA: {
-      isMangaPage,
-      getOnPrev: () => checkButton('.display_left #prev_chapter'),
-      getOnNext: () => checkButton('.display_right #next_chapter')
-    }
-  });
-})().catch(error => helper.log.error(error));
-
-        break;
-      }
-    case 'm.idmzj.com':
-    case 'm.dmzj.com':
-      {
-const dmzjDecrypt = require('dmzjDecrypt');
-const helper = require('helper');
-const main = require('main');
-const dmzjApi = require('userscript/dmzjApi');
-
-(async () => {
-  // 分别处理目录页和漫画页
-  switch (location.pathname.split('/')[1]) {
-    case 'info':
-      {
-        // 跳过正常漫画
-        if (Reflect.has(unsafeWindow, 'obj_id')) return;
-        const comicId = Number.parseInt(location.pathname.split('/')[2], 10);
-        if (Number.isNaN(comicId)) {
-          document.body.innerHTML = '';
-          document.body.insertAdjacentHTML('beforeend', `
-            请手动输入漫画名进行搜索 <br />
-            <input type="search"> <button>搜索</button> <br />
-            <div id="list" />
-          `);
-          helper.querySelector('button').addEventListener('click', async () => {
-            const comicName = helper.querySelector('input')?.value;
-            if (!comicName) return;
-            const res = await main.request(`https://s.acg.dmzj.com/comicsum/search.php?s=${comicName}`, {
-              errorText: '搜索漫画时出错'
-            });
-            const comicList = JSON.parse(res.responseText.slice(20, -1));
-            helper.querySelector('#list').innerHTML = comicList.map(({
-              id,
-              comic_name,
-              comic_author,
-              comic_url
-            }) => `
-                <b>《${comic_name}》<b/>——${comic_author}
-                <a href="${comic_url}">Web端</a>
-                <a href="https://m.dmzj.com/info/${id}.html">移动端</a>
-              `).join('<br />');
-          });
-          return;
-        }
-        const res = await main.request(`https://v4api.idmzj.com/comic/detail/${comicId}?uid=2665531&disable_level=1`, {
-          errorText: '获取漫画数据失败'
-        });
-        const {
-          comicInfo: {
-            last_updatetime,
-            title,
-            chapters
-          }
-        } = dmzjDecrypt(res.responseText);
-        document.title = title;
-        document.body.insertAdjacentHTML('beforeend', `<h1>${title}</h1>`);
-        for (const chapter of Object.values(chapters)) {
-          // 手动构建添加章节 dom
-          let temp = `<h2>${chapter.title}</h2>`;
-          let i = chapter.data.length;
-          while (i--) temp += `<a target="_blank" title="${chapter.data[i].chapter_title}" href="https://m.dmzj.com/view/${comicId}/${chapter.data[i].chapter_id}.html" ${chapter.data[i].updatetime === last_updatetime ? 'style="color:red"' : ''}>${chapter.data[i].chapter_title}</a>`;
-          document.body.insertAdjacentHTML('beforeend', temp);
-        }
-        document.body.childNodes[0].remove();
-        helper.useStyle(`
-          h1 { margin: 0 -20vw; }
-          h1, h2 { text-align: center; }
-          body { padding: 0 20vw; }
-          a {
-            display: inline-block;
-
-            min-width: 4em;
-            margin: 0 1em;
-
-            line-height: 2em;
-            white-space: nowrap;
-          }
-        `);
-        break;
-      }
-    case 'view':
-      {
-        // 如果不是隐藏漫画，直接进入阅读模式
-        if (unsafeWindow.comic_id) {
-          helper.useStyle('.subHeader{display:none !important}');
-          await main.universal({
-            name: 'dmzj',
-            getImgList: () => helper.querySelectorAll('#commicBox img').map(e => e.dataset.original).filter(Boolean),
-            getCommentList: () => dmzjApi.getViewpoint(unsafeWindow.subId, unsafeWindow.chapterId),
-            onNext: helper.querySelectorClick('#loadNextChapter'),
-            onPrev: helper.querySelectorClick('#loadPrevChapter')
-          });
-          return;
-        }
-        const tipDom = document.createElement('p');
-        tipDom.textContent = '正在加载中，请坐和放宽，若长时间无反应请刷新页面';
-        document.body.append(tipDom);
-        let data;
-        let comicId;
-        let chapterId;
-        try {
-          [, comicId, chapterId] = /(\d+)\/(\d+)/.exec(location.pathname);
-          data = await dmzjApi.getChapterInfo(comicId, chapterId);
-        } catch (error) {
-          main.toast.error('获取漫画数据失败', {
-            duration: Number.POSITIVE_INFINITY
-          });
-          tipDom.textContent = error.message;
-          throw error;
-        }
-        tipDom.textContent = `加载完成，即将进入阅读模式`;
-        const {
-          folder,
-          chapter_name,
-          next_chap_id,
-          prev_chap_id,
-          comic_id,
-          page_url
-        } = data;
-        document.title = `${chapter_name} ${folder.split('/').at(1)}`;
-        const {
-          setState
-        } = await main.useInit('dmzj');
-        setState(state => {
-          state.manga.onExit = undefined;
-          state.manga.onNext = next_chap_id ? () => {
-            location.href = `https://m.dmzj.com/view/${comic_id}/${next_chap_id}.html`;
-          } : undefined;
-          state.manga.onPrev = prev_chap_id ? () => {
-            location.href = `https://m.dmzj.com/view/${comic_id}/${prev_chap_id}.html`;
-          } : undefined;
-          state.manga.editButtonList = e => e;
-          state.comicMap[''].getImgList = () => {
-            if (page_url.length > 0) return page_url;
-            tipDom.innerHTML = `无法获得漫画数据，请通过 <a href="https://github.com/hymbz/ComicReadScript/issues" target="_blank">Github</a> 或 <a href="https://sleazyfork.org/zh-CN/scripts/374903-comicread/feedback#post-discussion" target="_blank">Greasy Fork</a> 进行反馈`;
-            return [];
-          };
-        });
-        setState('manga', 'commentList', await dmzjApi.getViewpoint(comicId, chapterId));
-        break;
-      }
-  }
-})().catch(error => helper.log.error(error));
-
-        break;
-      }
-    case 'www.idmzj.com':
-    case 'www.dmzj.com':
-      {
-const helper = require('helper');
-const main = require('main');
-const dmzjApi = require('userscript/dmzjApi');
-
-const turnPage = chapterId => {
-  if (!chapterId) return undefined;
-  return () => {
-    window.open(location.href.replace(/(?<=\/)\d+(?=\.html)/, `${chapterId}`), '_self');
-  };
-};
-(async () => {
-  await helper.waitDom('.head_wz');
-  // 只在漫画页内运行
-  const comicId = helper.querySelector('.head_wz [id]')?.id;
-  const chapterId = /(?<=\/)\d+(?=\.html)/.exec(location.pathname)?.[0];
-  if (!comicId || !chapterId) return;
-  const {
-    setState
-  } = await main.useInit('dmzj');
-  try {
-    const {
-      next_chap_id,
-      prev_chap_id,
-      page_url
-    } = await dmzjApi.getChapterInfo(comicId, chapterId);
-    setState(state => {
-      state.comicMap[''].getImgList = () => page_url;
-      state.manga.onNext = turnPage(next_chap_id);
-      state.manga.onPrev = turnPage(prev_chap_id);
-    });
-  } catch {
-    main.toast.error('获取漫画数据失败', {
-      duration: Number.POSITIVE_INFINITY
-    });
-  }
-})().catch(error => helper.log.error(error));
-
         break;
       }
 
@@ -11824,7 +11356,7 @@ const colorizeTag = async contextType => {
   switch (contextType) {
     case 'gallery':
       {
-        let css = location.origin === 'https://exhentai.org' ? '--tag: #DDDDDD; --tag-hover: #EEEEEE; --tup: #00E639; --tdn: #FF3333;' : '--tag: #5C0D11; --tag-hover: #8F4701; --tup: green; --tdn: red;';
+        let css = getComputedStyle(document.body).backgroundColor === 'rgb(52, 53, 59)' ? '--tag: #DDDDDD; --tag-hover: #EEEEEE; --tup: #00E639; --tdn: #FF3333;' : '--tag: #5C0D11; --tag-hover: #8F4701; --tup: green; --tdn: red;';
         css = `#taglist { ${css} }\n\n`;
         css += await helper.getGmValue('ehTagColorizeCss', updateMyTags);
         return helper.useStyle(css);
@@ -11840,6 +11372,21 @@ const colorizeTag = async contextType => {
     // 只能检查在 mytags 里删除了标签的情况，所以暂且不实现。
     // 等之后找到办法可以在不额外发起请求的情况下在列表页获取每个画廊的所有标签时再实现
   }
+};
+
+const searchNhentai = async title => {
+  const {
+    response
+  } = await main.request(`https://nhentai.net/api/galleries/search?query=${title}`, {
+    responseType: 'json',
+    errorText: helper.t('site.ehentai.nhentai_error'),
+    noTip: true,
+    headers: {
+      'User-Agent': navigator.userAgent
+    },
+    fetch: false
+  });
+  return response.result;
 };
 
 const defaultOptions = {
@@ -11986,25 +11533,6 @@ const nhentai = async ({
   setState,
   galleryTitle
 }) => {
-  // nhentai api 对应的扩展名
-
-  // 只要带上 cf_clearance cookie 就能通过 Cloudflare 验证，但其是 httpOnly
-  // 目前暴力猴还不支持 GM_Cookie，篡改猴也需要去设置里手动设置才能支持 httpOnly
-  // 所以暂不处理，就嗯等
-  // https://github.com/violentmonkey/violentmonkey/issues/603
-  const {
-    response: {
-      result
-    }
-  } = await main.request(`https://nhentai.net/api/galleries/search?query=${galleryTitle}`, {
-    responseType: 'json',
-    errorText: helper.t('site.ehentai.nhentai_error'),
-    noTip: true,
-    headers: {
-      'User-Agent': navigator.userAgent
-    },
-    fetch: false
-  });
   const downImg = async (i, media_id, type) => {
     const imgRes = await main.request(`https://i.nhentai.net/galleries/${media_id}/${i + 1}.${helper.fileType[type]}`, {
       headers: {
@@ -12015,6 +11543,7 @@ const nhentai = async ({
     });
     return URL.createObjectURL(imgRes.response);
   };
+  const result = await searchNhentai(galleryTitle);
   return result.map(({
     id,
     title,
@@ -12132,9 +11661,8 @@ const crossSiteLink = async context => {
   if (siteList.length === 0) return;
   const [comicMap, setComicMap] = store.createStore({});
   const ItemTag = props => (() => {
-    var _el$ = web.template(`<div><a>`)(),
+    var _el$ = web.template(`<div style=opacity:1.0><a>`)(),
       _el$2 = _el$.firstChild;
-    web.setStyleProperty(_el$, "opacity", "1.0");
     web.effect(_p$ => {
       var _v$ = `td_${props.id}`,
         _v$2 = props.class,
@@ -14110,7 +13638,7 @@ const pcApi = new class {
     'User-Agent': navigator.userAgent,
     referer: location.href
   };
-  get = (url, details, ...args) => main.request(`https://mapi.copy20.com${url}`, {
+  get = (url, details, ...args) => main.request(`https://api.2025copy.com${url}`, {
     responseType: 'json',
     headers: this.headers,
     fetch: false,
@@ -14196,16 +13724,12 @@ const buildChapters = async (comicName, hiddenType) => {
               },
               get children() {
                 return [(() => {
-                  var _el$2 = web.template(`<div class=van-tabs__wrap><div role=tablist class="van-tabs__nav van-tabs__nav--line"><div role=tab class="van-tab van-tab--active"><span class="van-tab__text van-tab__text--ellipsis"><span></span></span></div><div class=van-tabs__line style=transition-duration:0.3s>`)(),
+                  var _el$2 = web.template(`<div class=van-tabs__wrap><div role=tablist class="van-tabs__nav van-tabs__nav--line"style=background:transparent><div role=tab class="van-tab van-tab--active"><span class="van-tab__text van-tab__text--ellipsis"><span></span></span></div><div class=van-tabs__line style="width:0.24rem;transform:translateX(187.5px) translateX(-50%);transition-duration:0.3s">`)(),
                     _el$3 = _el$2.firstChild,
                     _el$4 = _el$3.firstChild,
                     _el$5 = _el$4.firstChild,
-                    _el$6 = _el$5.firstChild,
-                    _el$7 = _el$4.nextSibling;
-                  web.setStyleProperty(_el$3, "background", "transparent");
+                    _el$6 = _el$5.firstChild;
                   web.insert(_el$6, name);
-                  web.setStyleProperty(_el$7, "width", "0.24rem");
-                  web.setStyleProperty(_el$7, "transform", "translateX(187.5px) translateX(-50%)");
                   return _el$2;
                 })(), (() => {
                   var _el$8 = web.template(`<div class=van-tab__pane><div class="chapterList van-grid"style=padding-left:0.24rem>`)(),
@@ -14292,9 +13816,8 @@ const buildChapters = async (comicName, hiddenType) => {
                   return chapters[id];
                 },
                 children: chapter => (() => {
-                  var _el$26 = web.template(`<a target=_blank><li>`)(),
+                  var _el$26 = web.template(`<a target=_blank style=display:block><li>`)(),
                     _el$27 = _el$26.firstChild;
-                  web.setStyleProperty(_el$26, "display", "block");
                   web.insert(_el$27, () => chapter.name);
                   web.effect(_p$ => {
                     var _v$5 = `/comic/${comicName}/chapter/${chapter.id}`,
@@ -14327,11 +13850,10 @@ const buildChapters = async (comicName, hiddenType) => {
               return chapters[id].length;
             },
             get children() {
-              var _el$28 = web.template(`<div class=card style=max-width:100em><div class=card-body><h2 class=card-title></h2><ul>`)(),
+              var _el$28 = web.template(`<div class=card style="max-width:100em;margin:1em auto"><div class=card-body><h2 class=card-title></h2><ul>`)(),
                 _el$29 = _el$28.firstChild,
                 _el$30 = _el$29.firstChild,
                 _el$31 = _el$30.nextSibling;
-              web.setStyleProperty(_el$28, "margin", "1em auto");
               web.insert(_el$30, name);
               web.insert(_el$31, web.createComponent(solidJs.For, {
                 get each() {
@@ -14548,39 +14070,7 @@ const buildChapters = async (comicName, hiddenType) => {
         break;
       }
 
-    // #[Pixiv](https://www.pixiv.net)
-    // test: https://www.pixiv.net/artworks/128841242
-    case 'www.pixiv.net':
-      {
-        let imgList = [];
-        options = {
-          name: 'pixiv',
-          getImgList: () => imgList,
-          SPA: {
-            async isMangaPage() {
-              const id = Number(location.pathname.split('/')[2]);
-              if (!id || !location.pathname.startsWith('/artworks/')) {
-                imgList.length = 0;
-                return false;
-              }
-              const res = await main.request(`/ajax/illust/${id}/pages`, {
-                responseType: 'json'
-              });
-              imgList = res.response.body.map(e => e.urls.original);
-              return imgList.length > 1;
-            }
-          },
-          initOptions: {
-            autoShow: false,
-            defaultOption: {
-              pageNum: 1
-            }
-          }
-        };
-        break;
-      }
-
-    // #[再漫画](https://manhua.zaimanhua.com/)
+    // #国内漫画站[再漫画](https://manhua.zaimanhua.com/)
     // test: https://manhua.zaimanhua.com/view/heimaohemonvdeketang/64175/133789
     case 'www.zaimanhua.com':
     case 'manhua.zaimanhua.com':
@@ -14648,36 +14138,267 @@ const buildChapters = async (comicName, hiddenType) => {
         break;
       }
 
-    // #[明日方舟泰拉记事社](https://terra-historicus.hypergryph.com)
-    // test: https://terra-historicus.hypergryph.com/comic/6253/episode/3156
-    case 'terra-historicus.hypergryph.com':
+    // #国内漫画站[漫画柜(manhuagui)](https://www.manhuagui.com)
+    // test: https://www.manhuagui.com/comic/36584/508218.html
+    case 'tw.manhuagui.com':
+    case 'm.manhuagui.com':
+    case 'www.mhgui.com':
+    case 'www.manhuagui.com':
       {
-        const apiUrl = () => `https://terra-historicus.hypergryph.com/api${location.pathname}`;
-        const getImgUrl = i => async () => {
-          const res = await main.request(`${apiUrl()}/page?pageNum=${i + 1}`);
-          return JSON.parse(res.responseText).data.url;
+        if (!/\/comic\/\d+\/\d+\.html/.test(location.pathname)) break;
+        let comicInfo;
+        try {
+          const dataScript = helper.querySelectorAll('body > script:not([src])').find(script => script.innerHTML.startsWith('window['));
+          if (!dataScript) throw new Error(helper.t('site.changed_load_failed'));
+          comicInfo = JSON.parse(
+          // 只能通过 eval 获得数据
+          // oxlint-disable-next-line no-eval
+          eval(dataScript.innerHTML.slice(26)).match(/(?<=\()\{.+\}/)[0]);
+        } catch {
+          main.toast.error(helper.t('site.changed_load_failed'));
+          break;
+        }
+
+        // 让切换章节的提示可以显示在漫画页上
+        helper.useStyle(`#smh-msg-box { z-index: 2147483647 !important }`);
+        const handlePrevNext = cid => {
+          if (cid === 0) return undefined;
+          const newUrl = location.pathname.replace(/(?<=\/)\d+(?=\.html)/, `${cid}`);
+          return () => location.assign(newUrl);
         };
         options = {
-          name: 'terraHistoricus',
-          wait: () => Boolean(helper.querySelector('.HG_COMIC_READER_main')),
-          async getImgList() {
-            const res = await main.request(apiUrl(), {
-              responseType: 'json'
+          name: 'manhuagui',
+          getImgList() {
+            const sl = Object.entries(comicInfo.sl).map(attr => `${attr[0]}=${attr[1]}`).join('&');
+            if (comicInfo.files) return comicInfo.files.map(file => `${unsafeWindow.pVars.manga.filePath}${file}?${sl}`);
+            if (comicInfo.images) {
+              const {
+                origin
+              } = new URL(helper.querySelector('#manga img').src);
+              return comicInfo.images.map(url => `${origin}${url}?${sl}`);
+            }
+            main.toast.error(helper.t('site.changed_load_failed'), {
+              throw: true
             });
-            const pageList = res.response.data.pageInfos;
-            if (pageList.length === 0 && location.pathname.includes('episode')) throw new Error('获取图片列表时出错');
-            return helper.plimit(helper.range(pageList.length, getImgUrl));
+            return [];
           },
+          onNext: handlePrevNext(comicInfo.nextId),
+          onPrev: handlePrevNext(comicInfo.prevId)
+        };
+        break;
+      }
+
+    // #国内漫画站[动漫屋(dm5)](https://www.dm5.com)
+    // test: https://www.dm5.cn/m1033552/
+    case 'www.manhuaren.com':
+    case 'm.1kkk.com':
+    case 'www.1kkk.com':
+    case 'tel.dm5.com':
+    case 'en.dm5.com':
+    case 'cnc.dm5.com':
+    case 'www.dm5.cn':
+    case 'www.dm5.com':
+      {
+        if (!Reflect.has(unsafeWindow, 'DM5_CID')) break;
+        const imgNum = unsafeWindow.DM5_IMAGE_COUNT ?? unsafeWindow.imgsLen;
+        if (!(Number.isSafeInteger(imgNum) && imgNum > 0)) {
+          main.toast.error(helper.t('site.changed_load_failed'));
+          break;
+        }
+        const getPageImg = async i => {
+          const res = await unsafeWindow.$.ajax({
+            type: 'GET',
+            url: 'chapterfun.ashx',
+            data: {
+              cid: unsafeWindow.DM5_CID,
+              page: i,
+              key: unsafeWindow.$('#dm5_key').length > 0 ? unsafeWindow.$('#dm5_key').val() : '',
+              language: 1,
+              gtk: 6,
+              _cid: unsafeWindow.DM5_CID,
+              _mid: unsafeWindow.DM5_MID,
+              _dt: unsafeWindow.DM5_VIEWSIGN_DT,
+              _sign: unsafeWindow.DM5_VIEWSIGN
+            }
+          });
+          return eval(res); // oxlint-disable-line no-eval
+        };
+        const handlePrevNext = (pcSelector, mobileText) => helper.querySelectorClick(() => helper.querySelector(pcSelector) ?? helper.querySelectorAll('.view-bottom-bar a').find(e => e.textContent?.includes(mobileText)));
+        options = {
+          name: 'dm5',
+          getImgList({
+            dynamicLoad
+          }) {
+            // manhuaren 和 1kkk 的移动端上会直接用一个变量存储所有图片的链接
+            if (Array.isArray(unsafeWindow.newImgs) && unsafeWindow.newImgs.every(helper.isUrl)) return unsafeWindow.newImgs;
+            return dynamicLoad(async setImg => {
+              const imgList = new Set();
+              while (imgList.size < imgNum) {
+                // 因为每次会返回指定页数及上一页的图片链接，所以加个1减少请求次数
+                for (const url of await getPageImg(imgList.size + 1)) {
+                  if (imgList.has(url)) continue;
+                  imgList.add(url);
+                  setImg(imgList.size - 1, url);
+                }
+              }
+            }, imgNum);
+          },
+          onPrev: handlePrevNext('.logo_1', '上一章'),
+          onNext: handlePrevNext('.logo_2', '下一章'),
+          onExit: isEnd => isEnd && helper.scrollIntoView('.postlist')
+        };
+        break;
+      }
+
+    // #国内漫画站[mangabz](https://mangabz.com)
+    // test: https://mangabz.com/m131128/
+    case 'www.mangabz.com':
+    case 'mangabz.com':
+      {
+        if (!Reflect.has(unsafeWindow, 'MANGABZ_CID')) break;
+        const imgNum = unsafeWindow.MANGABZ_IMAGE_COUNT ?? unsafeWindow.imgsLen;
+        if (!(Number.isSafeInteger(imgNum) && imgNum > 0)) {
+          main.toast.error(helper.t('site.changed_load_failed'));
+          break;
+        }
+        const getPageImg = async i => {
+          const res = await unsafeWindow.$.ajax({
+            type: 'GET',
+            url: 'chapterimage.ashx',
+            data: {
+              cid: unsafeWindow.MANGABZ_CID,
+              page: i,
+              key: '',
+              _cid: unsafeWindow.MANGABZ_CID,
+              _mid: unsafeWindow.MANGABZ_MID,
+              _dt: unsafeWindow.MANGABZ_VIEWSIGN_DT,
+              _sign: unsafeWindow.MANGABZ_VIEWSIGN
+            }
+          });
+          return eval(res); // oxlint-disable-line no-eval
+        };
+        const handlePrevNext = (pcSelector, mobileText) => helper.querySelectorClick(() => helper.querySelector(pcSelector) ?? helper.querySelectorAll('.bottom-bar-tool a').find(e => e.textContent?.includes(mobileText)));
+        options = {
+          name: 'mangabz',
+          getImgList: ({
+            dynamicLoad
+          }) => dynamicLoad(async setImg => {
+            const imgList = new Set();
+            while (imgList.size < imgNum) {
+              // 因为每次会返回指定页数及上一页的图片链接，所以加个1减少请求次数
+              for (const url of await getPageImg(imgList.size + 1)) {
+                if (imgList.has(url)) continue;
+                imgList.add(url);
+                setImg(imgList.size - 1, url);
+              }
+            }
+          }, imgNum),
+          onNext: handlePrevNext('body > .container a[href^="/"]:last-child', '下一'),
+          onPrev: handlePrevNext('body > .container a[href^="/"]:first-child', '上一')
+        };
+        break;
+      }
+
+    // #国内漫画站[komiic](https://komiic.com)
+    // test: https://komiic.com/comic/2299/chapter/66668/images/all
+    case 'komiic.com':
+      {
+        const query = `
+        query imagesByChapterId($chapterId: ID!) {
+          imagesByChapterId(chapterId: $chapterId) {
+            id
+            kid
+            height
+            width
+            __typename
+          }
+        }`;
+        const getImgList = async () => {
+          const chapterId = /chapter\/(\d+)/.exec(location.pathname)?.[1];
+          if (!chapterId) throw new Error(helper.t('site.changed_load_failed'));
+          const res = await main.request('/api/query', {
+            method: 'POST',
+            responseType: 'json',
+            headers: {
+              'content-type': 'application/json'
+            },
+            data: JSON.stringify({
+              operationName: 'imagesByChapterId',
+              variables: {
+                chapterId: `${chapterId}`
+              },
+              query
+            })
+          });
+          return res.response.data.imagesByChapterId.map(({
+            kid
+          }) => `https://komiic.com/api/image/${kid}`);
+        };
+        const handlePrevNext = text => async () => {
+          await helper.waitDom('.v-bottom-navigation__content');
+          return helper.querySelectorClick('.v-bottom-navigation__content button:not([disabled])', text);
+        };
+        options = {
+          name: 'komiic',
+          getImgList,
           SPA: {
-            isMangaPage: () => location.href.includes('episode'),
-            getOnPrev: () => helper.querySelectorClick('footer .HG_COMIC_READER_prev a'),
-            getOnNext: () => helper.querySelectorClick('footer .HG_COMIC_READER_prev+.HG_COMIC_READER_buttonEp a')
+            isMangaPage: () => /comic\/\d+\/chapter\/\d+\/images\//.test(location.href),
+            getOnPrev: handlePrevNext('上一'),
+            getOnNext: handlePrevNext('下一'),
+            handleUrl: location => location.pathname
           }
         };
         break;
       }
 
-    // #[禁漫天堂](https://18comic.vip)
+    // #国内漫画站[無限動漫](https://www.8comic.com)
+    // test: 直接访问漫画页会因为 referer 检测不过而被拦截，跳过
+    case '8.twobili.com':
+    case 'a.twobili.com':
+    case 'articles.onemoreplace.tw':
+    case 'www.8comic.com':
+      {
+        if (!/^\/(?:online|ReadComic|comic)\//.test(location.pathname)) break;
+        Manga.downloadImgHeaders.Referer = 'https://www.8comic.com/';
+
+        // by: https://sleazyfork.org/zh-CN/scripts/374903-comicread/discussions/241035
+        const getImgList = () => [...unsafeWindow.xx.matchAll(/(?<= s=").+?(?=")/g)].map(([text]) => decodeURIComponent(text));
+        options = {
+          name: '8comic',
+          getImgList,
+          onNext: helper.querySelectorClick('#nextvol'),
+          onPrev: helper.querySelectorClick('#prevvol')
+        };
+        break;
+      }
+
+    // #国内R18[绅士漫画(wnacg)](https://www.wnacg.com)
+    // test: https://www.wnacg.com/photos-slide-aid-284931.html
+    case 'www.wn05.ru':
+    case 'www.wn04.ru':
+    case 'www.wnacg05.cc':
+    case 'www.wnacg.com':
+    case 'wnacg.com':
+      {
+        // 突出显示下拉阅读的按钮
+        const buttonDom = helper.querySelector('#bodywrap a.btn');
+        if (buttonDom) {
+          buttonDom.style.setProperty('background-color', '#607d8b');
+          buttonDom.style.setProperty('background-image', 'none');
+        }
+        if (!Reflect.has(unsafeWindow, 'imglist')) break;
+        options = {
+          name: 'wnacg',
+          getImgList: () => unsafeWindow.imglist.filter(({
+            caption
+          }) => caption !== '喜歡紳士漫畫的同學請加入收藏哦！').map(({
+            url
+          }) => new URL(url, location.origin).href)
+        };
+        break;
+      }
+
+    // #国内R18[禁漫天堂](https://18comic.vip)
     // test: https://18comic.vip/photo/1198559
     case '18comic.ink':
     case 'jmcomic-zzz.one':
@@ -14790,277 +14511,7 @@ const main = require('main');
         break;
       }
 
-    // #[漫画柜(manhuagui)](https://www.manhuagui.com)
-    // test: https://www.manhuagui.com/comic/36584/508218.html
-    case 'tw.manhuagui.com':
-    case 'm.manhuagui.com':
-    case 'www.mhgui.com':
-    case 'www.manhuagui.com':
-      {
-        if (!/\/comic\/\d+\/\d+\.html/.test(location.pathname)) break;
-        let comicInfo;
-        try {
-          const dataScript = helper.querySelectorAll('body > script:not([src])').find(script => script.innerHTML.startsWith('window['));
-          if (!dataScript) throw new Error(helper.t('site.changed_load_failed'));
-          comicInfo = JSON.parse(
-          // 只能通过 eval 获得数据
-          // oxlint-disable-next-line no-eval
-          eval(dataScript.innerHTML.slice(26)).match(/(?<=\()\{.+\}/)[0]);
-        } catch {
-          main.toast.error(helper.t('site.changed_load_failed'));
-          break;
-        }
-
-        // 让切换章节的提示可以显示在漫画页上
-        helper.useStyle(`#smh-msg-box { z-index: 2147483647 !important }`);
-        const handlePrevNext = cid => {
-          if (cid === 0) return undefined;
-          const newUrl = location.pathname.replace(/(?<=\/)\d+(?=\.html)/, `${cid}`);
-          return () => location.assign(newUrl);
-        };
-        options = {
-          name: 'manhuagui',
-          getImgList() {
-            const sl = Object.entries(comicInfo.sl).map(attr => `${attr[0]}=${attr[1]}`).join('&');
-            if (comicInfo.files) return comicInfo.files.map(file => `${unsafeWindow.pVars.manga.filePath}${file}?${sl}`);
-            if (comicInfo.images) {
-              const {
-                origin
-              } = new URL(helper.querySelector('#manga img').src);
-              return comicInfo.images.map(url => `${origin}${url}?${sl}`);
-            }
-            main.toast.error(helper.t('site.changed_load_failed'), {
-              throw: true
-            });
-            return [];
-          },
-          onNext: handlePrevNext(comicInfo.nextId),
-          onPrev: handlePrevNext(comicInfo.prevId)
-        };
-        break;
-      }
-
-    // #[动漫屋(dm5)](https://www.dm5.com)
-    // test: https://www.dm5.cn/m1033552/
-    case 'www.manhuaren.com':
-    case 'm.1kkk.com':
-    case 'www.1kkk.com':
-    case 'tel.dm5.com':
-    case 'en.dm5.com':
-    case 'cnc.dm5.com':
-    case 'www.dm5.cn':
-    case 'www.dm5.com':
-      {
-        if (!Reflect.has(unsafeWindow, 'DM5_CID')) break;
-        const imgNum = unsafeWindow.DM5_IMAGE_COUNT ?? unsafeWindow.imgsLen;
-        if (!(Number.isSafeInteger(imgNum) && imgNum > 0)) {
-          main.toast.error(helper.t('site.changed_load_failed'));
-          break;
-        }
-        const getPageImg = async i => {
-          const res = await unsafeWindow.$.ajax({
-            type: 'GET',
-            url: 'chapterfun.ashx',
-            data: {
-              cid: unsafeWindow.DM5_CID,
-              page: i,
-              key: unsafeWindow.$('#dm5_key').length > 0 ? unsafeWindow.$('#dm5_key').val() : '',
-              language: 1,
-              gtk: 6,
-              _cid: unsafeWindow.DM5_CID,
-              _mid: unsafeWindow.DM5_MID,
-              _dt: unsafeWindow.DM5_VIEWSIGN_DT,
-              _sign: unsafeWindow.DM5_VIEWSIGN
-            }
-          });
-          return eval(res); // oxlint-disable-line no-eval
-        };
-        const handlePrevNext = (pcSelector, mobileText) => helper.querySelectorClick(() => helper.querySelector(pcSelector) ?? helper.querySelectorAll('.view-bottom-bar a').find(e => e.textContent?.includes(mobileText)));
-        options = {
-          name: 'dm5',
-          getImgList({
-            dynamicLoad
-          }) {
-            // manhuaren 和 1kkk 的移动端上会直接用一个变量存储所有图片的链接
-            if (Array.isArray(unsafeWindow.newImgs) && unsafeWindow.newImgs.every(helper.isUrl)) return unsafeWindow.newImgs;
-            return dynamicLoad(async setImg => {
-              const imgList = new Set();
-              while (imgList.size < imgNum) {
-                // 因为每次会返回指定页数及上一页的图片链接，所以加个1减少请求次数
-                for (const url of await getPageImg(imgList.size + 1)) {
-                  if (imgList.has(url)) continue;
-                  imgList.add(url);
-                  setImg(imgList.size - 1, url);
-                }
-              }
-            }, imgNum);
-          },
-          onPrev: handlePrevNext('.logo_1', '上一章'),
-          onNext: handlePrevNext('.logo_2', '下一章'),
-          onExit: isEnd => isEnd && helper.scrollIntoView('.postlist')
-        };
-        break;
-      }
-
-    // #[绅士漫画(wnacg)](https://www.wnacg.com)
-    // test: https://www.wnacg.com/photos-slide-aid-284931.html
-    case 'www.wn04.ru':
-    case 'www.wnacg05.cc':
-    case 'www.wnacg03.cc':
-    case 'www.wnacg.com':
-    case 'wnacg.com':
-      {
-        // 突出显示下拉阅读的按钮
-        const buttonDom = helper.querySelector('#bodywrap a.btn');
-        if (buttonDom) {
-          buttonDom.style.setProperty('background-color', '#607d8b');
-          buttonDom.style.setProperty('background-image', 'none');
-        }
-        if (!Reflect.has(unsafeWindow, 'imglist')) break;
-        options = {
-          name: 'wnacg',
-          getImgList: () => unsafeWindow.imglist.filter(({
-            caption
-          }) => caption !== '喜歡紳士漫畫的同學請加入收藏哦！').map(({
-            url
-          }) => new URL(url, location.origin).href)
-        };
-        break;
-      }
-
-    // #[mangabz](https://mangabz.com)
-    // test: https://mangabz.com/m131128/
-    case 'www.mangabz.com':
-    case 'mangabz.com':
-      {
-        if (!Reflect.has(unsafeWindow, 'MANGABZ_CID')) break;
-        const imgNum = unsafeWindow.MANGABZ_IMAGE_COUNT ?? unsafeWindow.imgsLen;
-        if (!(Number.isSafeInteger(imgNum) && imgNum > 0)) {
-          main.toast.error(helper.t('site.changed_load_failed'));
-          break;
-        }
-        const getPageImg = async i => {
-          const res = await unsafeWindow.$.ajax({
-            type: 'GET',
-            url: 'chapterimage.ashx',
-            data: {
-              cid: unsafeWindow.MANGABZ_CID,
-              page: i,
-              key: '',
-              _cid: unsafeWindow.MANGABZ_CID,
-              _mid: unsafeWindow.MANGABZ_MID,
-              _dt: unsafeWindow.MANGABZ_VIEWSIGN_DT,
-              _sign: unsafeWindow.MANGABZ_VIEWSIGN
-            }
-          });
-          return eval(res); // oxlint-disable-line no-eval
-        };
-        const handlePrevNext = (pcSelector, mobileText) => helper.querySelectorClick(() => helper.querySelector(pcSelector) ?? helper.querySelectorAll('.bottom-bar-tool a').find(e => e.textContent?.includes(mobileText)));
-        options = {
-          name: 'mangabz',
-          getImgList: ({
-            dynamicLoad
-          }) => dynamicLoad(async setImg => {
-            const imgList = new Set();
-            while (imgList.size < imgNum) {
-              // 因为每次会返回指定页数及上一页的图片链接，所以加个1减少请求次数
-              for (const url of await getPageImg(imgList.size + 1)) {
-                if (imgList.has(url)) continue;
-                imgList.add(url);
-                setImg(imgList.size - 1, url);
-              }
-            }
-          }, imgNum),
-          onNext: handlePrevNext('body > .container a[href^="/"]:last-child', '下一'),
-          onPrev: handlePrevNext('body > .container a[href^="/"]:first-child', '上一')
-        };
-        break;
-      }
-
-    // #[komiic](https://komiic.com)
-    // test: https://komiic.com/comic/2299/chapter/66668/images/all
-    case 'komiic.com':
-      {
-        const query = `
-        query imagesByChapterId($chapterId: ID!) {
-          imagesByChapterId(chapterId: $chapterId) {
-            id
-            kid
-            height
-            width
-            __typename
-          }
-        }`;
-        const getImgList = async () => {
-          const chapterId = /chapter\/(\d+)/.exec(location.pathname)?.[1];
-          if (!chapterId) throw new Error(helper.t('site.changed_load_failed'));
-          const res = await main.request('/api/query', {
-            method: 'POST',
-            responseType: 'json',
-            headers: {
-              'content-type': 'application/json'
-            },
-            data: JSON.stringify({
-              operationName: 'imagesByChapterId',
-              variables: {
-                chapterId: `${chapterId}`
-              },
-              query
-            })
-          });
-          return res.response.data.imagesByChapterId.map(({
-            kid
-          }) => `https://komiic.com/api/image/${kid}`);
-        };
-        const handlePrevNext = text => async () => {
-          await helper.waitDom('.v-bottom-navigation__content');
-          return helper.querySelectorClick('.v-bottom-navigation__content button:not([disabled])', text);
-        };
-        options = {
-          name: 'komiic',
-          getImgList,
-          SPA: {
-            isMangaPage: () => /comic\/\d+\/chapter\/\d+\/images\//.test(location.href),
-            getOnPrev: handlePrevNext('上一'),
-            getOnNext: handlePrevNext('下一'),
-            handleUrl: location => location.pathname
-          }
-        };
-        break;
-      }
-
-    // #[MangaDex](https://mangadex.org)
-    // test: https://mangadex.org/chapter/4c419c16-ef49-4305-9c46-d3adbe1f60b7
-    case 'mangadex.org':
-      {
-        options = {
-          name: 'mangadex',
-          async getImgList() {
-            const chapter_id = location.pathname.split('/').at(2);
-            const {
-              response: {
-                baseUrl,
-                chapter: {
-                  data,
-                  hash
-                }
-              }
-            } = await main.request(`https://api.mangadex.org/at-home/server/${chapter_id}?forcePort443=false`, {
-              responseType: 'json'
-            });
-            return data.map(e => `${baseUrl}/data/${hash}/${e}`);
-          },
-          SPA: {
-            isMangaPage: () => /^\/chapter\/.+/.test(location.pathname),
-            getOnPrev: () => helper.querySelectorClick(`#chapter-selector > a[href^="/chapter/"]:nth-of-type(1)`),
-            getOnNext: () => helper.querySelectorClick(`#chapter-selector > a[href^="/chapter/"]:nth-of-type(2)`),
-            handleUrl: location => location.href.replace(/(?<=\/chapter\/.+?)\/.*/, '')
-          }
-        };
-        break;
-      }
-
-    // #[NoyAcg](https://noy1.top)
+    // #国内R18[NoyAcg](https://noy1.top)
     // test: https://noy1.top/#/read/13349
     
     case 'noy1.top':
@@ -15083,28 +14534,7 @@ const main = require('main');
         break;
       }
 
-    // #[無限動漫](https://www.8comic.com)
-    // test: 直接访问漫画页会因为 referer 检测不过而被拦截，跳过
-    case '8.twobili.com':
-    case 'a.twobili.com':
-    case 'articles.onemoreplace.tw':
-    case 'www.8comic.com':
-      {
-        if (!/^\/(?:online|ReadComic|comic)\//.test(location.pathname)) break;
-        Manga.downloadImgHeaders.Referer = 'https://www.8comic.com/';
-
-        // by: https://sleazyfork.org/zh-CN/scripts/374903-comicread/discussions/241035
-        const getImgList = () => [...unsafeWindow.xx.matchAll(/(?<= s=").+?(?=")/g)].map(([text]) => decodeURIComponent(text));
-        options = {
-          name: '8comic',
-          getImgList,
-          onNext: helper.querySelectorClick('#nextvol'),
-          onPrev: helper.querySelectorClick('#prevvol')
-        };
-        break;
-      }
-
-    // #[熱辣漫畫](https://www.relamanhua.org/)
+    // #国内R18[熱辣漫畫](https://www.relamanhua.org/)
     // test: https://www.relamanhua.org/comic/lianggrendeetaobixianshi/chapter/33cde95c-c8ea-11ea-a67e-00163e0ca5bd
     case 'www.relamanhua.org':
     case 'www.manga2024.com':
@@ -15124,7 +14554,25 @@ const main = require('main');
         break;
       }
 
-    // #[hitomi](https://hitomi.la)
+    // #国内R18[hanime1](https://hanime1.me)
+    // test: https://hanime1.me/comic/134422
+    case 'hanime1.me':
+      {
+        if (!location.pathname.startsWith('/comic/')) break;
+        options = {
+          name: 'hanime1',
+          getImgList: async () => {
+            const downloadDom = await helper.wait(() => helper.querySelector('.comics-metadata-margin-top a:has(span.material-icons)'));
+            const id = downloadDom.href.match(/\/g\/(\d+)\//)?.[1];
+            if (!id) throw new Error(helper.t('site.changed_load_failed'));
+            const data = await getNhentaiData(id);
+            return toImgList(data);
+          }
+        };
+        break;
+      }
+
+    // #国外R18[hitomi](https://hitomi.la)
     // test: https://hitomi.la/reader/3427121.html
     case 'hitomi.la':
       {
@@ -15136,7 +14584,72 @@ const main = require('main');
         break;
       }
 
-    // #[SchaleNetwork](https://schale.network/)
+    // #国外R18[hdoujin](https://hdoujin.org)
+    // test: https://hdoujin.org/g/95756/2d1aa56c3325
+    case 'hdoujin.org':
+      {
+        if (!location.pathname.startsWith('/g/')) break;
+
+        // https://github.com/dyphire/hentai-assistant/blob/hdoujin/src/providers/hdoujin_api.py
+
+        const clearance = localStorage.getItem('clearance');
+        const reRes = location.pathname.match(/\/g\/(\d+)\/(.+)/);
+        if (!reRes || !clearance) throw new Error(helper.t('site.changed_load_failed'));
+        const [, id, key] = reRes;
+        const api = async (url, details) => {
+          const res = await main.request(`https://api.hdoujin.org${url}?crt=${clearance}`, {
+            fetch: true,
+            responseType: 'json',
+            ...details
+          });
+          return res.response;
+        };
+        options = {
+          name: 'hdoujin',
+          getImgList: async ({
+            dynamicLazyLoad
+          }) => {
+            const {
+              data
+            } = await api(`/books/detail/${id}/${key}`, {
+              method: 'POST'
+            });
+
+            // 使用原图分辨率
+            const size = '1280';
+            const {
+              id: dataId,
+              key: dataKey
+            } = data[size];
+            const {
+              base,
+              entries
+            } = await api(`/books/data/${id}/${key}/${dataId}/${dataKey}/${size}`);
+            return dynamicLazyLoad({
+              length: entries.length,
+              loadImg: async i => {
+                const res = await main.request(`${base}${entries[i].path}`, {
+                  cookie: document.cookie,
+                  headers: {
+                    Referer: 'https://hdoujin.org/',
+                    Origin: 'https://hdoujin.org',
+                    'sec-fetch-dest': 'empty',
+                    'sec-fetch-mode': 'cors',
+                    'sec-fetch-site': 'cross-site'
+                  },
+                  responseType: 'blob',
+                  fetch: false
+                });
+                const imgUrl = URL.createObjectURL(res.response);
+                return imgUrl;
+              }
+            });
+          }
+        };
+        break;
+      }
+
+    // #国外R18[SchaleNetwork](https://schale.network/)
     // test: 有cf验证，跳过
     case 'shupogaki.moe':
     case 'hoshino.one':
@@ -15202,7 +14715,7 @@ const main = require('main');
         break;
       }
 
-    // #[nude-moon](https://nude-moon.org)
+    // #国外R18[nude-moon](https://nude-moon.org)
     // test: https://nude-moon.org/22729--zone-himitsu-no-tomodachi--tayney-drug.html
     case 'nude-moon.org':
       {
@@ -15243,7 +14756,96 @@ const main = require('main');
         break;
       }
 
-    // #[kemono](https://kemono.su)
+    // #国外R18[HentaiZap](https://hentaizap.com)
+    // test: https://hentaizap.com/gallery/1290854/
+    // #国外R18[IMHentai](https://imhentai.xxx)
+    // test: https://imhentai.xxx/gallery/1526168/
+    // #国外R18[HentaiEra](https://hentaiera.com)
+    // test: https://hentaiera.com/gallery/1506236/
+    // #国外R18[HentaiEnvy](https://hentaienvy.com)
+    // test: https://hentaienvy.com/gallery/1411647/
+    case 'hentaizap.com':
+    case 'imhentai.xxx':
+    case 'hentaiera.com':
+    case 'hentaienvy.com':
+      {
+        const imgDom = helper.querySelector(':is(#thumbs_box, #thumbs_gallery_div, #append_thumbs, #ap_thumbs) img[data-src]');
+        if (!imgDom) break;
+        const imgUrl = imgDom.dataset.src;
+        if (!imgUrl || !unsafeWindow.g_th) throw new Error(helper.t('site.changed_load_failed'));
+        const baseUrl = imgUrl.replace(/\/\dt.[a-z]+$/, '');
+        options = {
+          name: 'HentaiEnvy',
+          getImgList() {
+            const imgList = [];
+            for (const [i, th] of Object.entries(unsafeWindow.g_th)) {
+              const [t, w, h] = th.split(',');
+              imgList[Number(i) - 1] = {
+                src: `${baseUrl}/${i}.${helper.fileType[t]}`,
+                width: Number(w),
+                height: Number(h)
+              };
+            }
+            return imgList;
+          }
+        };
+        break;
+      }
+
+    // #国外漫画站[MangaDex](https://mangadex.org)
+    // test: https://mangadex.org/chapter/4c419c16-ef49-4305-9c46-d3adbe1f60b7
+    case 'mangadex.org':
+      {
+        options = {
+          name: 'mangadex',
+          async getImgList() {
+            const chapter_id = location.pathname.split('/').at(2);
+            const {
+              response: {
+                baseUrl,
+                chapter: {
+                  data,
+                  hash
+                }
+              }
+            } = await main.request(`https://api.mangadex.org/at-home/server/${chapter_id}?forcePort443=false`, {
+              responseType: 'json'
+            });
+            return data.map(e => `${baseUrl}/data/${hash}/${e}`);
+          },
+          SPA: {
+            isMangaPage: () => /^\/chapter\/.+/.test(location.pathname),
+            getOnPrev: () => helper.querySelectorClick(`#chapter-selector > a[href^="/chapter/"]:nth-of-type(1)`),
+            getOnNext: () => helper.querySelectorClick(`#chapter-selector > a[href^="/chapter/"]:nth-of-type(2)`),
+            handleUrl: location => location.href.replace(/(?<=\/chapter\/.+?)\/.*/, '')
+          }
+        };
+        break;
+      }
+
+    // #国外漫画站[welovemanga](https://nicomanga.com)
+    // test: https://nicomanga.com/read-yuri-no-hajimari-wa-dorei-kara-chapter-6.2.html
+    case 'nicomanga.com':
+    case 'weloma.art':
+    case 'welovemanga.one':
+      {
+        if (!helper.querySelector('#listImgs, .chapter-content')) break;
+        const getImgList = async () => {
+          const imgList = helper.querySelectorAll('img.chapter-img:not(.ls-is-cached)').map(e => (e.dataset.src || e.dataset.srcset || e.dataset.original || e.src).trim()).filter(Boolean);
+          if (imgList.length > 0 && imgList.every(url => !/loading.*\.gif/.test(url))) return imgList;
+          await helper.sleep(500);
+          return getImgList();
+        };
+        options = {
+          name: 'welovemanga',
+          getImgList,
+          onNext: helper.querySelectorClick('.rd_top-right.next:not(.disabled)'),
+          onPrev: helper.querySelectorClick('.rd_top-left.prev:not(.disabled)')
+        };
+        break;
+      }
+
+    // #Fanbox[kemono](https://kemono.su)
     // test: https://kemono.cr/fanbox/user/41106591/post/6813818
     case 'kemono.cr':
     case 'kemono.su':
@@ -15324,7 +14926,7 @@ const main = require('main');
         break;
       }
 
-    // #[nekohouse](https://nekohouse.su)
+    // #Fanbox[nekohouse](https://nekohouse.su)
     // test: https://nekohouse.su/fanbox/user/159912/post/1350453
     case 'nekohouse.su':
       {
@@ -15342,71 +14944,68 @@ const main = require('main');
         break;
       }
 
-    // #[welovemanga](https://welovemanga.one)
-    // test: https://nicomanga.com/read-yuri-no-hajimari-wa-dorei-kara-chapter-6.2.html
-    case 'nicomanga.com':
-    case 'weloma.art':
-    case 'welovemanga.one':
+    // #其他[Pixiv](https://www.pixiv.net)
+    // test: https://www.pixiv.net/artworks/128841242
+    case 'www.pixiv.net':
       {
-        if (!helper.querySelector('#listImgs, .chapter-content')) break;
-        const getImgList = async () => {
-          const imgList = helper.querySelectorAll('img.chapter-img:not(.ls-is-cached)').map(e => (e.dataset.src || e.dataset.srcset || e.dataset.original || e.src).trim()).filter(Boolean);
-          if (imgList.length > 0 && imgList.every(url => !/loading.*\.gif/.test(url))) return imgList;
-          await helper.sleep(500);
-          return getImgList();
-        };
+        let imgList = [];
         options = {
-          name: 'welovemanga',
-          getImgList,
-          onNext: helper.querySelectorClick('.rd_top-right.next:not(.disabled)'),
-          onPrev: helper.querySelectorClick('.rd_top-left.prev:not(.disabled)')
-        };
-        break;
-      }
-
-    // #[HentaiZap](https://hentaizap.com)
-    // test: https://hentaizap.com/g/1290854/1/
-    case 'hentaizap.com':
-      {
-        if (!location.pathname.startsWith('/g/')) break;
-        options = {
-          name: 'hentaizap',
-          getImgList() {
-            const max = Number(helper.querySelector('#pages').value);
-            const img = helper.querySelector('#fimg');
-            const imgUrl = img.dataset.src || img.src;
-            const baseUrl = imgUrl.split('/').slice(0, -1).join('/');
-            return helper.range(max, i => `${baseUrl}/${i + 1}.${helper.fileType[unsafeWindow.g_th[i + 1].slice(0, 1)]}`);
-          }
-        };
-        break;
-      }
-
-    // #[IMHentai](https://imhentai.xxx)
-    // test: https://imhentai.xxx/gallery/1526168/
-    case 'imhentai.xxx':
-      {
-        if (!location.pathname.startsWith('/gallery/')) break;
-        options = {
-          name: 'IMHentai',
-          getImgList() {
-            const [baseUrl] = helper.querySelector('#append_thumbs a img').dataset.src.match(/.+\//);
-            const imgList = [];
-            for (const [i, th] of Object.entries(unsafeWindow.g_th)) {
-              const [t, w, h] = th.split(',');
-              imgList[Number(i) - 1] = {
-                src: `${baseUrl}${i}.${helper.fileType[t]}`,
-                width: Number(w),
-                height: Number(h)
-              };
+          name: 'pixiv',
+          getImgList: () => imgList,
+          SPA: {
+            async isMangaPage() {
+              const id = Number(location.pathname.split('/')[2]);
+              if (!id || !location.pathname.startsWith('/artworks/')) {
+                imgList.length = 0;
+                return false;
+              }
+              const res = await main.request(`/ajax/illust/${id}/pages`, {
+                responseType: 'json'
+              });
+              imgList = res.response.body.map(e => e.urls.original);
+              return imgList.length > 1;
             }
-            return imgList;
+          },
+          initOptions: {
+            autoShow: false,
+            defaultOption: {
+              pageNum: 1
+            }
           }
         };
         break;
       }
 
-    // #[最前線](https://sai-zen-sen.jp)
+    // #其他[明日方舟泰拉记事社](https://terra-historicus.hypergryph.com)
+    // test: https://terra-historicus.hypergryph.com/comic/6253/episode/3156
+    case 'terra-historicus.hypergryph.com':
+      {
+        const apiUrl = () => `https://terra-historicus.hypergryph.com/api${location.pathname}`;
+        const getImgUrl = i => async () => {
+          const res = await main.request(`${apiUrl()}/page?pageNum=${i + 1}`);
+          return JSON.parse(res.responseText).data.url;
+        };
+        options = {
+          name: 'terraHistoricus',
+          wait: () => Boolean(helper.querySelector('.HG_COMIC_READER_main')),
+          async getImgList() {
+            const res = await main.request(apiUrl(), {
+              responseType: 'json'
+            });
+            const pageList = res.response.data.pageInfos;
+            if (pageList.length === 0 && location.pathname.includes('episode')) throw new Error('获取图片列表时出错');
+            return helper.plimit(helper.range(pageList.length, getImgUrl));
+          },
+          SPA: {
+            isMangaPage: () => location.href.includes('episode'),
+            getOnPrev: () => helper.querySelectorClick('footer .HG_COMIC_READER_prev a'),
+            getOnNext: () => helper.querySelectorClick('footer .HG_COMIC_READER_prev+.HG_COMIC_READER_buttonEp a')
+          }
+        };
+        break;
+      }
+
+    // #其他[最前線](https://sai-zen-sen.jp)
     // test: https://sai-zen-sen.jp/works/comics/karanokyoukai/01/01.html
     case 'sai-zen-sen.jp':
       {
@@ -15444,8 +15043,8 @@ const main = require('main');
       }
     default:
       {
-        // #[Tachidesk](https://github.com/Suwayomi/Tachidesk-Sorayomi)
-        // #[LANraragi](https://github.com/Difegue/LANraragi)
+        // #其他[Tachidesk](https://github.com/Suwayomi/Tachidesk-Sorayomi)
+        // #其他[LANraragi](https://github.com/Difegue/LANraragi)
 const Manga = require('components/Manga');
 const helper = require('helper');
 const request = require('request');
@@ -15513,6 +15112,8 @@ if (document.querySelector(`head > meta[content="A manga reader that runs tachiy
 
 if (location.pathname === '/reader' && document.querySelector('.ip > a[href="https://github.com/Difegue/LANraragi"]')?.textContent.trim() === 'LANraragi.') {
   let initFlag = true;
+
+  // eslint-disable-next-line unused-imports/no-unused-vars
   options = {
     name: 'LANraragi',
     getImgList: () => helper.wait(() => Reader?.pages),

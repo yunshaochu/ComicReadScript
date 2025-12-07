@@ -671,8 +671,6 @@ try {
             base: string;
             entries: { path: string }[];
           }>(`/books/data/${id}/${key}/${dataId}/${dataKey}/${size}`);
-          // debugger;
-          // return entries.map(({ path }) => `${base}${path}`);
 
           return dynamicLazyLoad({
             length: entries.length,
