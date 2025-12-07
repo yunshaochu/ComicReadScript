@@ -46,7 +46,7 @@ const pcApi = new (class {
 
   get: typeof request = (url, details, ...args) =>
     request(
-      `https://mapi.copy20.com${url}`,
+      `https://api.2025copy.com${url}`,
       { responseType: 'json', headers: this.headers, fetch: false, ...details },
       ...args,
     );
