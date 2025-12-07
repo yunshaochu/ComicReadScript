@@ -51,6 +51,11 @@ select {
   width: 100%;
   height: 100%;
   padding: 2em;
+
+  &[data-dark] {
+    color: #ccc;
+    background-color: #202b38;
+  }
 }
 
 .main {

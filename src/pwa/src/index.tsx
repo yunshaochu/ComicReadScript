@@ -7,9 +7,9 @@ import { Show } from 'solid-js';
 
 import type { MangaProps } from 'components/Manga';
 
-import { Manga } from 'components/Manga';
+import { Manga, store as MangeStore } from 'components/Manga';
 import { toast, Toaster } from 'components/Toast';
-import { createEffectOn, setInitLang, t } from 'helper';
+import { boolDataVal, createEffectOn, setInitLang, t } from 'helper';
 
 import { DownloadButton, loadUrl } from './DownloadButton';
 import { supportExtension } from './fileParser';
@@ -61,7 +61,11 @@ export const Root: Component = () => {
   );
 
   return (
-    <div ref={(e) => handleDrag(e)} class={classes.root}>
+    <div
+      ref={(e) => handleDrag(e)}
+      class={classes.root}
+      data-dark={boolDataVal(MangeStore.option.darkMode)}
+    >
       <div class={classes.main} data-drag={store.dragging}>
         <div class={classes.body}>
           {/* eslint-disable-next-line solid/no-innerhtml */}
