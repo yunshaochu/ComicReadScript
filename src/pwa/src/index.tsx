@@ -48,7 +48,7 @@ window.addEventListener('paste', (event) =>
 );
 
 const handleOptionChange: MangaProps['onOptionChange'] = (option) =>
-  localStorage.setItem('option', JSON.stringify(option));
+  localStorage.setItem('@option', JSON.stringify(option));
 
 (window as any).toast = toast;
 
