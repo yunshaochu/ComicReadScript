@@ -80,4 +80,9 @@ ComicReader.open(['/1.png', '/2.png', '/3.png'], '标题');
 ComicReader.setProps('show', false);
 // 跳到指定页数（注意在双页模式下，页数不等于图片在列表里的序列数）
 ComicReader.goto(1);
+
+// 加载中的图片可以先用空字符串占位，之后再 open 新的图片列表
+ComicReader.open(['', '', '/3.png'], '标题');
+// 传递一个空数组可以重置为初始状态
+ComicReader.open([]);
 ```
