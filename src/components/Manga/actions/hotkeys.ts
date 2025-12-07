@@ -27,6 +27,8 @@ export const [defaultHotkeys, setDefaultHotkeys] = createSignal<
   translate_to_end: [],
   fullscreen: [],
   auto_scroll: [],
+  jump_next: [],
+  jump_prev: [],
 });
 
 /** 快捷键配置 */

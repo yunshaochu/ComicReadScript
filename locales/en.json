@@ -49,6 +49,8 @@
   "hotkeys": {
     "enter_read_mode": "Enter reading mode",
     "float_tag_list": "Floating tag list",
+    "jump_next": "Jump to next chap",
+    "jump_prev": "Jump to previous chap",
     "jump_to_end": "Jump to the last page",
     "jump_to_home": "Jump to the first page",
     "page_down": "Turn the page to the down",

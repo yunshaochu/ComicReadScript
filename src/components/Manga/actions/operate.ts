@@ -212,6 +212,11 @@ export const handleHotkey = (hotkey: string, e?: KeyboardEvent) => {
     case 'fullscreen':
       return switchFullscreen();
 
+    case 'jump_next':
+      return store.prop.onNext?.();
+    case 'jump_prev':
+      return store.prop.onPrev?.();
+
     case 'switch_auto_enlarge':
       return setOption((draftOption) => {
         draftOption.disableZoom = !draftOption.disableZoom;

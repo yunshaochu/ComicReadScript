@@ -49,6 +49,8 @@
   "hotkeys": {
     "enter_read_mode": "进入阅读模式",
     "float_tag_list": "悬浮标签列表",
+    "jump_next": "跳至下一话",
+    "jump_prev": "跳至上一话",
     "jump_to_end": "跳至尾页",
     "jump_to_home": "跳至首页",
     "page_down": "向下翻页",
