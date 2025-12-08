@@ -638,14 +638,9 @@ try {
     // #国外R18[hdoujin](https://hdoujin.org)
     // test: https://hdoujin.org/g/95756/2d1aa56c3325
     case 'hdoujin.org': {
-      if (!location.pathname.startsWith('/g/')) break;
-
       // https://github.com/dyphire/hentai-assistant/blob/hdoujin/src/providers/hdoujin_api.py
-
       const clearance = localStorage.getItem('clearance');
-      const reRes = location.pathname.match(/\/g\/(\d+)\/(.+)/);
-      if (!reRes || !clearance) throw new Error(t('site.changed_load_failed'));
-      const [, id, key] = reRes;
+      if (!clearance) throw new Error(t('site.changed_load_failed'));
 
       const api = async <T>(url: string, details?: RequestDetails<T>) => {
         const res = await request<T>(
@@ -658,15 +653,26 @@ try {
       options = {
         name: 'hdoujin',
         getImgList: async ({ dynamicLazyLoad }) => {
+          const reRes = location.pathname.match(/\/g\/(\d+)\/(.+)/);
+          if (!reRes) throw new Error(t('site.changed_load_failed'));
+          const [, id, key] = reRes;
+
           type ExtraData = { id: string; key: string; size: string };
           const { data } = await api<{ data: Record<string, ExtraData> }>(
             `/books/detail/${id}/${key}`,
             { method: 'POST' },
           );
 
-          // 使用原图分辨率
-          const size = '1280';
+          // 选择最高分辨率
+          const [[size]] = Object.entries(data)
+            .filter(([, data]) => data.id && data.key)
+            .toSorted(([a], [b]) => {
+              if (a === '0') return -1;
+              if (b === '0') return 1;
+              return Number(b) - Number(a);
+            });
           const { id: dataId, key: dataKey } = data[size];
+
           const { base, entries } = await api<{
             base: string;
             entries: { path: string }[];
@@ -692,6 +698,9 @@ try {
               return imgUrl;
             },
           });
+        },
+        SPA: {
+          isMangaPage: () => location.pathname.startsWith('/g/'),
         },
       };
       break;
